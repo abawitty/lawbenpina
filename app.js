@@ -1,4 +1,4 @@
-(() => {
+﻿(() => {
 'use strict';
 
 const DEFAULTS = { businessName: 'Lawbenpina Ventures', whatsapp: '233577788857', email: '', markupPercent: 25, arrivalDays: 55, fallbackRate: null };
@@ -63,7 +63,7 @@ function renderItems() {
         <div>
           <h3>${esc(it.name)}</h3>
           <div class="meta">${it.opts ? esc(it.opts) + ' · ' : ''}Qty ${it.qty} × ${money(unitP(it))}</div>
-          <div class="meta"><a href="${esc(it.link)}" target="_blank" rel="noopener" style="color:var(--gold-soft)">View on Alibaba</a></div>
+          <div class="meta"><a href="${esc(it.link)}" target="_blank" rel="noopener" class="link">View on Alibaba</a></div>
         </div>
         <div class="price">${money(lineP(it))}</div>
         <div class="acts">
@@ -230,7 +230,7 @@ function finish(sent) {
   if (!sent) {
     const el = $('placeError');
     el.hidden = false;
-    el.innerHTML = `We couldn't submit your order online. Please send it to us on WhatsApp instead: <a href="${esc(waLink(orderText(o)))}" target="_blank" rel="noopener" style="color:var(--gold-soft);font-weight:600">Send order on WhatsApp</a>, or press Confirm again to retry.`;
+    el.innerHTML = `We couldn't submit your order online. Please send it to us on WhatsApp instead: <a href="${esc(waLink(orderText(o)))}" target="_blank" rel="noopener" class="link">Send order on WhatsApp</a>, or press Confirm again to retry.`;
     $('placeBtn').disabled = false;
     return;
   }
