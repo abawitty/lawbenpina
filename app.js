@@ -19,7 +19,7 @@ function isAlibaba(u) {
 }
 
 // A readable label taken from the product URL, e.g. ".../Wireless-Earbuds_160012.html" -> "Wireless Earbuds"
-function label(link) {
+function linkLabel(link) {
   try {
     let seg = decodeURIComponent(new URL(link).pathname.split('/').filter(Boolean).pop() || '');
     seg = seg.replace(/\.html?$/i, '').replace(/_\d+$/, '').replace(/[-_]+/g, ' ').trim();
@@ -27,6 +27,8 @@ function label(link) {
   } catch (e) {}
   return 'Alibaba item';
 }
+const isDesc = (it) => it.type === 'desc';
+const label = (it) => (isDesc(it) ? (it.desc.length > 60 ? it.desc.slice(0, 60) + '…' : it.desc) : linkLabel(it.link));
 
 // ---------- draft persistence ----------
 const CUST_IDS = ['c_name', 'c_phone', 'c_whatsapp', 'c_email', 'c_address', 'c_city', 'c_region', 'c_digital', 'c_landmark', 'c_notes'];
@@ -36,7 +38,11 @@ function loadDraft() {
   try {
     const d = JSON.parse(localStorage.getItem(DRAFT_KEY) || 'null');
     if (!d) return;
-    if (Array.isArray(d.items)) S.items = d.items.filter((it) => it && it.qty > 0 && isAlibaba(it.link)).map((it) => ({ link: it.link, qty: it.qty }));
+    if (Array.isArray(d.items)) {
+      S.items = d.items
+        .filter((it) => it && it.qty > 0 && (it.type === 'desc' ? typeof it.desc === 'string' && it.desc.trim() : isAlibaba(it.link)))
+        .map((it) => (it.type === 'desc' ? { type: 'desc', desc: it.desc.trim(), qty: it.qty } : { type: 'link', link: it.link, qty: it.qty }));
+    }
     Object.entries(d.cust || {}).forEach(([k, v]) => { const el = $(k); if (el && typeof v === 'string') el.value = v; });
   } catch (e) {}
 }
@@ -52,12 +58,11 @@ function show(n) {
 
 // ---------- items ----------
 function itemCard(it, i, withActions) {
+  const body = isDesc(it)
+    ? `<h3>Described item</h3><div class="desc">${esc(it.desc)}</div><div class="meta">Quantity: ${it.qty}</div>`
+    : `<h3>${esc(label(it))}</h3><div class="meta">Quantity: ${it.qty}</div><div class="meta"><a href="${esc(it.link)}" target="_blank" rel="noopener" class="link">View on Alibaba</a></div>`;
   return `<article class="item">
-    <div>
-      <h3>${esc(label(it.link))}</h3>
-      <div class="meta">Quantity: ${it.qty}</div>
-      <div class="meta"><a href="${esc(it.link)}" target="_blank" rel="noopener" class="link">View on Alibaba</a></div>
-    </div>
+    <div>${body}</div>
     <div class="price muted">Quote to follow</div>
     ${withActions ? `<div class="acts"><button class="btn btn-sm" type="button" data-act="edit" data-i="${i}">Edit</button><button class="btn btn-sm" type="button" data-act="remove" data-i="${i}">Remove</button></div>` : ''}
   </article>`;
@@ -69,14 +74,24 @@ function renderItems() {
     : '<p class="empty">No items yet. Add your first item below.</p>';
 }
 
+const typeRadios = () => document.querySelectorAll('input[name="i_type"]');
+const currentType = () => document.querySelector('input[name="i_type"]:checked').value;
+function setType(t) {
+  typeRadios().forEach((r) => (r.checked = r.value === t));
+  $('rowLink').hidden = t !== 'link';
+  $('rowDesc').hidden = t !== 'desc';
+}
+typeRadios().forEach((r) => r.addEventListener('change', () => setType(currentType())));
+
 function resetItemForm() {
   $('itemForm').reset();
   $('i_qty').value = 1;
+  setType('link');
   S.editing = null;
   $('formTitle').textContent = 'Add an item';
   $('itemBtn').textContent = 'Add item';
   $('itemCancel').hidden = true;
-  ['i_link', 'i_qty'].forEach((id) => $(id).setCustomValidity(''));
+  ['i_link', 'i_desc', 'i_qty'].forEach((id) => $(id).setCustomValidity(''));
 }
 
 $('itemList').addEventListener('click', (e) => {
@@ -89,7 +104,10 @@ $('itemList').addEventListener('click', (e) => {
     renderItems(); saveDraft();
   } else {
     const it = S.items[i];
-    $('i_link').value = it.link; $('i_qty').value = it.qty;
+    setType(isDesc(it) ? 'desc' : 'link');
+    $('i_link').value = isDesc(it) ? '' : it.link;
+    $('i_desc').value = isDesc(it) ? it.desc : '';
+    $('i_qty').value = it.qty;
     S.editing = i;
     $('formTitle').textContent = 'Edit item';
     $('itemBtn').textContent = 'Save changes';
@@ -101,12 +119,14 @@ $('itemCancel').addEventListener('click', resetItemForm);
 
 $('itemForm').addEventListener('submit', (e) => {
   e.preventDefault();
-  const link = $('i_link'), qty = $('i_qty');
-  [link, qty].forEach((el) => el.setCustomValidity(''));
-  if (!isAlibaba(link.value.trim())) link.setCustomValidity('Please paste a link from alibaba.com');
+  const type = currentType();
+  const link = $('i_link'), desc = $('i_desc'), qty = $('i_qty');
+  [link, desc, qty].forEach((el) => el.setCustomValidity(''));
+  if (type === 'link' && !isAlibaba(link.value.trim())) link.setCustomValidity('Please paste a link from alibaba.com, or choose "I\'ll describe what I want"');
+  if (type === 'desc' && desc.value.trim().length < 5) desc.setCustomValidity('Please describe what you want (at least a few words)');
   if (!(Number.isInteger(+qty.value) && +qty.value >= 1 && +qty.value <= 100000)) qty.setCustomValidity('Quantity must be a whole number of 1 or more');
   if (!e.target.checkValidity()) { e.target.reportValidity(); return; }
-  const item = { link: link.value.trim(), qty: +qty.value };
+  const item = type === 'desc' ? { type: 'desc', desc: desc.value.trim(), qty: +qty.value } : { type: 'link', link: link.value.trim(), qty: +qty.value };
   if (S.editing !== null) S.items[S.editing] = item; else S.items.push(item);
   resetItemForm(); renderItems(); saveDraft();
 });
@@ -173,7 +193,9 @@ function makeRef(d) {
 const waLink = (text) => `https://wa.me/${S.cfg.whatsapp}${text ? '?text=' + encodeURIComponent(text) : ''}`;
 
 function orderText(o) {
-  const lines = o.items.map((it, i) => `${i + 1}. ${label(it.link)}\n   Quantity: ${it.qty}\n   ${it.link}`);
+  const lines = o.items.map((it, i) => (isDesc(it)
+    ? `${i + 1}. (Described, no link) ${it.desc}\n   Quantity: ${it.qty}`
+    : `${i + 1}. ${label(it)}\n   Quantity: ${it.qty}\n   ${it.link}`));
   const c = o.cust;
   return `Hello ${S.cfg.businessName}, I would like a quote for this import order.\nRef: ${o.ref}\n\nITEMS\n${lines.join('\n')}\n\nShipping: to be calculated and sent to me\n\nName: ${c.c_name}\nPhone: ${c.c_phone}${c.c_whatsapp ? '\nWhatsApp: ' + c.c_whatsapp : ''}\nEmail: ${c.c_email}\nAddress: ${[c.c_address, c.c_city, c.c_region].filter(Boolean).join(', ')}${c.c_digital ? '\nDigital address: ' + c.c_digital : ''}${c.c_landmark ? '\nLandmark: ' + c.c_landmark : ''}${c.c_notes ? '\nNotes: ' + c.c_notes : ''}`;
 }
@@ -226,10 +248,7 @@ $('printBtn').addEventListener('click', () => window.print());
 
 // ---------- startup ----------
 async function init() {
-  $('yr').textContent = new Date().getFullYear();
   try { const r = await fetch('settings.json', { cache: 'no-cache' }); if (r.ok) S.cfg = { ...DEFAULTS, ...(await r.json()) }; } catch (e) {}
-  $('waTop').href = waLink('Hello, I would like to import something from Alibaba.');
-  $('factDays').textContent = `About ${S.cfg.arrivalDays} days to arrive`;
   loadDraft();
   renderItems();
 }

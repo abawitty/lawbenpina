@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Place an order | Lawbenpina Ventures</title>
+<meta name="description" content="Tell us what you want to import from Alibaba, with a link or a description, and get a quote in Ghana cedis.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#ef0e52">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Lawbenpina Ventures home"><img src="logo.png" alt="Lawbenpina Ventures"></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary btn-sm" href="order.html">Place an order</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Place an order</span>
+    <h1>Tell us what you want</h1>
+    <p>Send an Alibaba link, or just describe the item. We check the price, send you a quote in Ghana cedis, and nothing is bought until you accept.</p>
+  </div>
+</div>
+
+<section id="order" class="tight">
+  <div class="wrap">
+    <ol class="stepper" id="stepper">
+      <li class="on">1. Items</li><li>2. Your details</li><li>3. Review &amp; send</li>
+    </ol>
+
+    <div class="card">
+      <!-- STEP 1 -->
+      <div id="p1">
+        <div id="itemList"></div>
+
+        <h3 style="margin-top:8px;" id="formTitle">Add an item</h3>
+        <form id="itemForm" novalidate>
+          <div class="seg" role="radiogroup" aria-label="How do you want to add this item?">
+            <label class="seg-opt"><input type="radio" name="i_type" value="link" checked><span>I have an Alibaba link</span></label>
+            <label class="seg-opt"><input type="radio" name="i_type" value="desc"><span>I'll describe what I want</span></label>
+          </div>
+          <div class="grid">
+            <div class="full" id="rowLink">
+              <label for="i_link">Alibaba product link</label>
+              <input id="i_link" type="url" placeholder="https://www.alibaba.com/product-detail/...">
+              <div class="help">Find the product on <a href="https://www.alibaba.com" target="_blank" rel="noopener" class="link">Alibaba.com</a> (opens in a new tab) and copy the page link.</div>
+            </div>
+            <div class="full" id="rowDesc" hidden>
+              <label for="i_desc">Describe what you want</label>
+              <textarea id="i_desc" maxlength="500" placeholder="e.g. Rechargeable desk fan, white, quiet, USB powered"></textarea>
+              <div class="help">Include the type, size, colour, model or anything else that matters. You can send photos on WhatsApp after you send your request.</div>
+            </div>
+            <div><label for="i_qty">Quantity</label><input id="i_qty" type="number" min="1" step="1" inputmode="numeric" value="1" required></div>
+          </div>
+          <div class="row" style="margin-top:16px;">
+            <button class="btn btn-primary" type="submit" id="itemBtn">Add item</button>
+            <button class="btn" type="button" id="itemCancel" hidden>Cancel edit</button>
+          </div>
+        </form>
+        <div class="nav-row"><span></span><button class="btn btn-primary" id="to2" type="button">Continue &rarr;</button></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="p2" hidden>
+        <h3>Your details</h3>
+        <p class="muted" style="margin-bottom:14px;">We use these to contact you and deliver your order.</p>
+        <form id="custForm" novalidate>
+          <div class="grid">
+            <div class="full"><label for="c_name">Full name</label><input id="c_name" type="text" autocomplete="name" required></div>
+            <div><label for="c_phone">Phone number</label><input id="c_phone" type="tel" autocomplete="tel" placeholder="024 000 0000" required></div>
+            <div><label for="c_whatsapp">WhatsApp number <small>(if different)</small></label><input id="c_whatsapp" type="tel"></div>
+            <div class="full"><label for="c_email">Email address</label><input id="c_email" type="email" autocomplete="email" required></div>
+            <div class="full"><label for="c_address">Residential address</label><input id="c_address" type="text" autocomplete="street-address" required></div>
+            <div><label for="c_city">Town / city</label><input id="c_city" type="text" autocomplete="address-level2" required></div>
+            <div><label for="c_region">Region</label>
+              <select id="c_region" required><option value="">Select region</option>
+                <option>Greater Accra</option><option>Ashanti</option><option>Western</option><option>Western North</option><option>Central</option><option>Eastern</option><option>Volta</option><option>Oti</option><option>Northern</option><option>Savannah</option><option>North East</option><option>Upper East</option><option>Upper West</option><option>Bono</option><option>Bono East</option><option>Ahafo</option>
+              </select></div>
+            <div><label for="c_digital">Ghana Post digital address <small>(optional)</small></label><input id="c_digital" type="text" placeholder="GA-123-4567"></div>
+            <div><label for="c_landmark">Landmark / directions <small>(optional)</small></label><input id="c_landmark" type="text"></div>
+            <div class="full"><label for="c_notes">Colour, size or model for each item, or anything else we should know <small>(optional)</small></label><textarea id="c_notes"></textarea></div>
+          </div>
+        </form>
+        <div class="nav-row"><button class="btn" id="back1" type="button">&larr; Back</button><button class="btn btn-primary" id="to3" type="button">Review request &rarr;</button></div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="p3" hidden>
+        <div class="review" id="reviewBox"></div>
+        <div class="consent">
+          <label><input type="checkbox" id="k1"> <span>I have checked the items and quantities above and I want Lawbenpina Ventures to check the price on Alibaba (or find a matching product, where I described what I want) and send me a quote.</span></label>
+          <label><input type="checkbox" id="k2"> <span>I understand that the price and the shipping cost will be sent to me separately, and that nothing is bought or paid for until I accept my quote.</span></label>
+          <label><input type="checkbox" id="k3"> <span>I understand the arrival date is only an estimate, and I agree to the <a href="terms.html" target="_blank" rel="noopener" class="link">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener" class="link">Privacy Notice</a>.</span></label>
+        </div>
+        <div class="alert info" style="margin-top:16px;">No payment is taken at this step. After you send your request, we contact you with your quote in Ghana cedis.</div>
+        <div class="alert warn" id="placeError" hidden></div>
+        <div class="nav-row"><button class="btn" id="back2" type="button">&larr; Back</button><button class="btn btn-primary" id="placeBtn" type="button" disabled>Send my order request</button></div>
+      </div>
+
+      <!-- DONE -->
+      <div id="p4" hidden>
+        <div class="done-box">
+          <span class="eyebrow">Request received</span>
+          <h2 style="margin-top:8px;">Thank you, <span id="doneName"></span></h2>
+          <div class="ref" id="doneRef"></div>
+          <p id="doneMsg"></p>
+        </div>
+        <div class="review" id="doneSummary"></div>
+        <div class="row no-print" style="margin-top:20px;justify-content:center;">
+          <a class="btn btn-wa" id="doneWa" href="#" target="_blank" rel="noopener">Send this request on WhatsApp</a>
+          <button class="btn" id="printBtn" type="button">Print / save summary</button>
+        </div>
+        <p class="muted no-print" style="text-align:center;margin-top:12px;">Tap the WhatsApp button and press send so we can reach you faster. You can also send photos of what you want there.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><img src="logo.png" alt="Lawbenpina Ventures"><span>&copy; <span class="js-year"></span> Lawbenpina Ventures, Accra, Ghana</span></div>
+    <div class="foot-links"><a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<!-- Registers the form with Netlify so orders arrive by email. Filled and submitted by app.js. -->
+<form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="order_ref"><input name="name"><input name="phone"><input name="whatsapp"><input name="email">
+  <input name="address"><input name="city"><input name="region"><input name="digital_address"><input name="landmark">
+  <textarea name="notes"></textarea><textarea name="items_summary"></textarea><textarea name="items_json"></textarea>
+  <input name="est_arrival"><input name="consent_time"><input name="consent_given">
+</form>
+
+<script src="site.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
