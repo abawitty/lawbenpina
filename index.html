@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lawbenpina Ventures | Import from Alibaba to Ghana</title>
+<meta name="description" content="Order anything from Alibaba and have it imported to Ghana. See your price in Ghana cedis, confirm your order, and we handle the rest.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html"><b>Lawbenpina</b> Ventures</a>
+    <nav>
+      <a class="hide-sm" href="#how">How it works</a>
+      <a href="#order">Place an order</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap hero">
+  <span class="eyebrow">Accra, Ghana &middot; Import service</span>
+  <h1>Buy from Alibaba.<br>We handle the import.</h1>
+  <p class="lede">Found something on Alibaba? Tell us what you want, see the price in Ghana cedis, confirm your order, and we source it and bring it to you.</p>
+  <div class="row">
+    <a class="btn btn-primary" href="#order">Start your order</a>
+    <a class="btn btn-wa" id="waTop" href="#" target="_blank" rel="noopener">Chat on WhatsApp</a>
+  </div>
+</div>
+
+<section id="how">
+  <div class="wrap">
+    <span class="eyebrow">How it works</span>
+    <h2>Four simple steps</h2>
+    <div class="steps4">
+      <div><span>01</span><h3>Add your items</h3><p>Paste the Alibaba link, the quantity and the price you see.</p></div>
+      <div><span>02</span><h3>Your details</h3><p>Tell us who you are and where to deliver.</p></div>
+      <div><span>03</span><h3>Review &amp; confirm</h3><p>Check everything and give your consent to place the order.</p></div>
+      <div><span>04</span><h3>We follow up</h3><p>We contact you to confirm the price, payment and shipping cost.</p></div>
+    </div>
+    <div class="facts">
+      <span>Prices shown in Ghana cedis (GH₵)</span>
+      <span>Shipping cost calculated and sent to you separately</span>
+      <span id="factDays">About 55 days to arrive</span>
+    </div>
+  </div>
+</section>
+
+<section id="order">
+  <div class="wrap">
+    <span class="eyebrow">Place an order</span>
+    <h2>Build your order</h2>
+    <ol class="stepper" id="stepper">
+      <li class="on">1. Items</li><li>2. Your details</li><li>3. Review &amp; confirm</li>
+    </ol>
+
+    <div class="card">
+      <!-- STEP 1 -->
+      <div id="p1">
+        <div class="rate" id="rateLine">Loading today's exchange rate&hellip;</div>
+        <div class="alert warn" id="rateError" hidden>We couldn't load today's exchange rate, so prices can't be shown right now. Please refresh the page, or <a id="waRate" href="#" target="_blank" rel="noopener">message us on WhatsApp</a>.</div>
+        <p class="muted" style="margin-bottom:14px;">Find the product on <a href="https://www.alibaba.com" target="_blank" rel="noopener" style="color:var(--gold-soft)">Alibaba.com</a> (opens in a new tab), choose your quantity, then copy the page link and the unit price in US$ shown for that quantity.</p>
+
+        <div id="itemList"></div>
+        <div class="totals" id="totals1" hidden></div>
+
+        <h3 style="margin-top:24px;" id="formTitle">Add an item</h3>
+        <form id="itemForm" novalidate>
+          <div class="grid">
+            <div class="full"><label for="i_link">Alibaba product link</label><input id="i_link" type="url" placeholder="https://www.alibaba.com/product-detail/..." required></div>
+            <div class="full"><label for="i_name">Product name</label><input id="i_name" type="text" maxlength="160" required></div>
+            <div class="full"><label for="i_opts">Colour / size / model <small>(as on Alibaba, optional)</small></label><input id="i_opts" type="text" maxlength="200"></div>
+            <div><label for="i_qty">Quantity</label><input id="i_qty" type="number" min="1" step="1" inputmode="numeric" value="1" required></div>
+            <div><label for="i_usd">Unit price on Alibaba (US$)</label><input id="i_usd" type="number" min="0.01" step="0.01" inputmode="decimal" required><div class="help">The price per piece for your quantity.</div></div>
+          </div>
+          <div class="row" style="margin-top:16px;">
+            <button class="btn btn-primary" type="submit" id="itemBtn">Add item</button>
+            <button class="btn" type="button" id="itemCancel" hidden>Cancel edit</button>
+          </div>
+        </form>
+        <div class="nav-row"><span></span><button class="btn btn-primary" id="to2" type="button">Continue &rarr;</button></div>
+      </div>
+
+      <!-- STEP 2 -->
+      <div id="p2" hidden>
+        <h3>Your details</h3>
+        <p class="muted" style="margin-bottom:14px;">We use these to contact you and deliver your order.</p>
+        <form id="custForm" novalidate>
+          <div class="grid">
+            <div class="full"><label for="c_name">Full name</label><input id="c_name" type="text" autocomplete="name" required></div>
+            <div><label for="c_phone">Phone number</label><input id="c_phone" type="tel" autocomplete="tel" placeholder="024 000 0000" required></div>
+            <div><label for="c_whatsapp">WhatsApp number <small>(if different)</small></label><input id="c_whatsapp" type="tel"></div>
+            <div class="full"><label for="c_email">Email address</label><input id="c_email" type="email" autocomplete="email" required></div>
+            <div class="full"><label for="c_address">Residential address</label><input id="c_address" type="text" autocomplete="street-address" required></div>
+            <div><label for="c_city">Town / city</label><input id="c_city" type="text" autocomplete="address-level2" required></div>
+            <div><label for="c_region">Region</label>
+              <select id="c_region" required><option value="">Select region</option>
+                <option>Greater Accra</option><option>Ashanti</option><option>Western</option><option>Western North</option><option>Central</option><option>Eastern</option><option>Volta</option><option>Oti</option><option>Northern</option><option>Savannah</option><option>North East</option><option>Upper East</option><option>Upper West</option><option>Bono</option><option>Bono East</option><option>Ahafo</option>
+              </select></div>
+            <div><label for="c_digital">Ghana Post digital address <small>(optional)</small></label><input id="c_digital" type="text" placeholder="GA-123-4567"></div>
+            <div><label for="c_landmark">Landmark / directions <small>(optional)</small></label><input id="c_landmark" type="text"></div>
+            <div class="full"><label for="c_notes">Anything else we should know? <small>(optional)</small></label><textarea id="c_notes"></textarea></div>
+          </div>
+        </form>
+        <div class="nav-row"><button class="btn" id="back1" type="button">&larr; Back</button><button class="btn btn-primary" id="to3" type="button">Review order &rarr;</button></div>
+      </div>
+
+      <!-- STEP 3 -->
+      <div id="p3" hidden>
+        <div class="review" id="reviewBox"></div>
+        <div class="consent">
+          <label><input type="checkbox" id="k1"> <span>I have checked the items, quantities and prices above and I want Lawbenpina Ventures to place this order.</span></label>
+          <label><input type="checkbox" id="k2"> <span>I understand that shipping is not included in the total and will be calculated and sent to me separately.</span></label>
+          <label><input type="checkbox" id="k3"> <span>I understand the arrival date is only an estimate, and I agree to the <a href="terms.html" target="_blank" rel="noopener" style="color:var(--gold-soft)">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener" style="color:var(--gold-soft)">Privacy Notice</a>.</span></label>
+        </div>
+        <div class="alert info" style="margin-top:16px;">No payment is taken at this step. After you place the order, we contact you to confirm the price and share payment details.</div>
+        <div class="alert warn" id="placeError" hidden></div>
+        <div class="nav-row"><button class="btn" id="back2" type="button">&larr; Back</button><button class="btn btn-primary" id="placeBtn" type="button" disabled>Confirm &amp; place order</button></div>
+      </div>
+
+      <!-- DONE -->
+      <div id="p4" hidden>
+        <div class="done-box">
+          <span class="eyebrow">Order received</span>
+          <h2 style="margin-top:8px;">Thank you, <span id="doneName"></span></h2>
+          <div class="ref" id="doneRef"></div>
+          <p id="doneMsg"></p>
+        </div>
+        <div class="review" id="doneSummary"></div>
+        <div class="row no-print" style="margin-top:20px;justify-content:center;">
+          <a class="btn btn-wa" id="doneWa" href="#" target="_blank" rel="noopener">Send this order on WhatsApp</a>
+          <button class="btn" id="printBtn" type="button">Print / save summary</button>
+        </div>
+        <p class="muted no-print" style="text-align:center;margin-top:12px;">Tap the WhatsApp button and press send so we can reach you faster.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>&copy; <span id="yr"></span> Lawbenpina Ventures, Accra, Ghana</span>
+    <span><a href="terms.html">Terms</a> &middot; <a href="privacy.html">Privacy</a></span>
+  </div>
+</footer>
+
+<!-- Registers the form with Netlify so orders arrive by email. Filled and submitted by app.js. -->
+<form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="order_ref"><input name="name"><input name="phone"><input name="whatsapp"><input name="email">
+  <input name="address"><input name="city"><input name="region"><input name="digital_address"><input name="landmark">
+  <textarea name="notes"></textarea><textarea name="items_summary"></textarea><textarea name="items_json"></textarea>
+  <input name="items_subtotal_ghs"><input name="rate_usd_ghs"><input name="rate_time"><input name="est_arrival">
+  <input name="consent_time"><input name="consent_given">
+</form>
+
+<script src="app.js"></script>
+</body>
+</html>
