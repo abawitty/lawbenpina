@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#ef0e52">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="how">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Lawbenpina Ventures home"><img src="logo.png" alt="Lawbenpina Ventures"></a>
@@ -30,14 +30,14 @@
 <div class="page-hero">
   <div class="wrap">
     <span class="eyebrow">How it works</span>
-    <h1>From your request to your door</h1>
-    <p>Here is exactly what happens when you order through Lawbenpina Ventures.</p>
+    <h1 data-cms="title">From your request to your door</h1>
+    <p data-cms="intro">Here is exactly what happens when you order through Lawbenpina Ventures.</p>
   </div>
 </div>
 
 <section class="tight">
   <div class="wrap">
-    <ol class="timeline">
+    <ol class="timeline" data-cms-list="steps" data-tpl="step">
       <li><h3>Tell us what you want</h3><p>Paste the Alibaba link, describe the item in your own words, or upload a photo of it, and tell us the quantity. Add as many items as you like.</p></li>
       <li><h3>Give your delivery details</h3><p>Your name, phone number, email and delivery address, so we can reach you and deliver your order.</p></li>
       <li><h3>Receive your quote</h3><p>We check the price on Alibaba, or find a matching product if you described what you want or sent a photo. We convert it to Ghana cedis and add our service charge. Shipping is worked out and sent to you separately.</p></li>
@@ -50,16 +50,16 @@
 <section>
   <div class="wrap">
     <span class="eyebrow">Questions</span>
-    <h2>Frequently asked questions</h2>
-    <details><summary>Do I need an Alibaba link?</summary><p>No. If you have a link, paste it. If you don't, choose "I'll describe what I want" and tell us the type, size, colour or model, or choose "I have a photo" and upload a picture of what you want. We'll find a matching product and send you a quote.</p></details>
+    <h2 data-cms="faqTitle">Frequently asked questions</h2>
+    <div data-cms-list="faqs" data-tpl="faq"><details><summary>Do I need an Alibaba link?</summary><p>No. If you have a link, paste it. If you don't, choose "I'll describe what I want" and tell us the type, size, colour or model, or choose "I have a photo" and upload a picture of what you want. We'll find a matching product and send you a quote.</p></details>
     <details><summary>How is my price worked out?</summary><p>We take the price on Alibaba in US dollars, convert it to Ghana cedis at that day's rate, and add our service charge. You see the total in cedis in your quote.</p></details>
     <details><summary>Is shipping included in the quote?</summary><p>No. Shipping is calculated separately and sent to you.</p></details>
     <details><summary>When do I pay?</summary><p>Only after you accept your quote. Placing a request does not cost anything and does not commit you to buy.</p></details>
     <details><summary>How long will delivery take?</summary><p>We estimate about <span class="js-days">55</span> days after your order is confirmed. It is an estimate, not a guarantee, because shipping and customs can affect timing.</p></details>
     <details><summary>Can I order more than one item?</summary><p>Yes. Add as many items as you like to one request, using links, descriptions, photos, or a mix.</p></details>
-    <details><summary>How is the shop different from placing an order?</summary><p>The <a class="link" href="shop.html">shop</a> sells items we have already bought, at fixed prices in cedis. Placing an order is for anything else you want us to import from Alibaba for you.</p></details>
+    <details><summary>How is the shop different from placing an order?</summary><p>The <a class="link" href="shop.html">shop</a> sells items we have already bought, at fixed prices in cedis, and you pay the delivery fee on delivery. Placing an order is for anything else you want us to import from Alibaba for you.</p></details>
     <details><summary>What happens to my personal details?</summary><p>We use them only to contact you and deliver your order. Read our <a class="link" href="privacy.html">Privacy Notice</a> for more.</p></details>
-    <details><summary>What about cancellations and refunds?</summary><p>Our <a class="link" href="terms.html">Terms</a> explain how cancellations and refunds work. You can also ask us on WhatsApp before you order.</p></details>
+    <details><summary>What about cancellations and refunds?</summary><p>Our <a class="link" href="terms.html">Terms</a> explain how cancellations and refunds work. You can also ask us on WhatsApp before you order.</p></details></div>
   </div>
 </section>
 

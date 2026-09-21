@@ -1,0 +1,23 @@
+{
+  "eyebrow": "Accra, Ghana · Import service",
+  "title": "Buy from Alibaba.\nWe handle the import.",
+  "intro": "Found something on Alibaba? Send us the link. Not sure where to find it? Describe it or upload a photo. We send you a quote in Ghana cedis, and once you accept, we source it and bring it to you.",
+  "whyEyebrow": "Why Lawbenpina",
+  "whyTitle": "Importing made simple",
+  "features": [
+    {
+      "title": "A link, a description or a photo",
+      "text": "Paste an Alibaba link if you have one. If not, tell us in your own words what you want, or upload a photo, and we look for it."
+    },
+    {
+      "title": "A clear quote in cedis",
+      "text": "We check the price and send your total in Ghana cedis. Shipping is quoted separately, and nothing is bought until you accept."
+    },
+    {
+      "title": "Delivered to you",
+      "text": "We handle the sourcing, shipping and delivery to your address in Ghana, in about {days} days."
+    }
+  ],
+  "ctaTitle": "Ready to order?",
+  "ctaText": "Send us a link, a description or a photo. It takes about two minutes, and no payment is taken."
+}

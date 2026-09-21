@@ -1,0 +1,65 @@
+{
+  "title": "From your request to your door",
+  "intro": "Here is exactly what happens when you order through Lawbenpina Ventures.",
+  "steps": [
+    {
+      "title": "Tell us what you want",
+      "text": "Paste the Alibaba link, describe the item in your own words, or upload a photo of it, and tell us the quantity. Add as many items as you like."
+    },
+    {
+      "title": "Give your delivery details",
+      "text": "Your name, phone number, email and delivery address, so we can reach you and deliver your order."
+    },
+    {
+      "title": "Receive your quote",
+      "text": "We check the price on Alibaba, or find a matching product if you described what you want or sent a photo. We convert it to Ghana cedis and add our service charge. Shipping is worked out and sent to you separately."
+    },
+    {
+      "title": "Accept the quote",
+      "text": "Nothing is bought or paid for until you accept. When you do, we share the payment details."
+    },
+    {
+      "title": "We order, ship and deliver",
+      "text": "We place the order, handle shipping, and deliver to your address. Delivery is estimated at about {days} days after your order is confirmed."
+    }
+  ],
+  "faqTitle": "Frequently asked questions",
+  "faqs": [
+    {
+      "q": "Do I need an Alibaba link?",
+      "a": "No. If you have a link, paste it. If you don't, choose \"I'll describe what I want\" and tell us the type, size, colour or model, or choose \"I have a photo\" and upload a picture of what you want. We'll find a matching product and send you a quote."
+    },
+    {
+      "q": "How is my price worked out?",
+      "a": "We take the price on Alibaba in US dollars, convert it to Ghana cedis at that day's rate, and add our service charge. You see the total in cedis in your quote."
+    },
+    {
+      "q": "Is shipping included in the quote?",
+      "a": "No. Shipping is calculated separately and sent to you."
+    },
+    {
+      "q": "When do I pay?",
+      "a": "Only after you accept your quote. Placing a request does not cost anything and does not commit you to buy."
+    },
+    {
+      "q": "How long will delivery take?",
+      "a": "We estimate about {days} days after your order is confirmed. It is an estimate, not a guarantee, because shipping and customs can affect timing."
+    },
+    {
+      "q": "Can I order more than one item?",
+      "a": "Yes. Add as many items as you like to one request, using links, descriptions, photos, or a mix."
+    },
+    {
+      "q": "How is the shop different from placing an order?",
+      "a": "The [shop](shop.html) sells items we have already bought, at fixed prices in cedis, and you pay the delivery fee on delivery. Placing an order is for anything else you want us to import from Alibaba for you."
+    },
+    {
+      "q": "What happens to my personal details?",
+      "a": "We use them only to contact you and deliver your order. Read our [Privacy Notice](privacy.html) for more."
+    },
+    {
+      "q": "What about cancellations and refunds?",
+      "a": "Our [Terms](terms.html) explain how cancellations and refunds work. You can also ask us on WhatsApp before you order."
+    }
+  ]
+}

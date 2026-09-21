@@ -1,4 +1,4 @@
-(async () => {
+﻿(async () => {
 'use strict';
 await LV.ready;
 const { esc, money, cart } = LV;
@@ -19,7 +19,7 @@ function renderGrid() {
   const list = products.filter((p) => filter === 'All' || p.category === filter);
   $('productGrid').innerHTML = list.map((p) => `
     <button type="button" class="pcard" data-id="${esc(p.id)}">
-      <span class="pimg"><img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">${p.inStock ? '' : '<span class="badge">Sold out</span>'}</span>
+      <span class="pimg"><img ${LV.imgAttrs(p.image, 600)} alt="${esc(p.name)}" loading="lazy">${p.inStock ? '' : '<span class="badge">Sold out</span>'}</span>
       <span class="pinfo"><h3>${esc(p.name)}</h3>${p.category ? `<span class="pcat">${esc(p.category)}</span>` : ''}<span class="pprice">${money(p.price)}</span></span>
     </button>`).join('');
 }
@@ -28,7 +28,7 @@ function openProduct(id) {
   const p = products.find((x) => x.id === id);
   if (!p) return;
   current = p;
-  $('pdImg').src = p.image; $('pdImg').alt = p.name;
+  LV.setImg($('pdImg'), p.image, 1000); $('pdImg').alt = p.name;
   $('pdCat').textContent = p.category;
   $('pdName').textContent = p.name;
   $('pdPrice').textContent = money(p.price);

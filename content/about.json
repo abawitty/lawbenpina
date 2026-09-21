@@ -1,0 +1,26 @@
+{
+  "title": "Superior quality, delivered",
+  "intro": "Lawbenpina Ventures is an Accra-based business founded in 2017.",
+  "storyTitle": "Our story",
+  "story": [
+    "Lawbenpina Ventures started as a consulting and investment venture and has grown into an import service. If there is something you want to bring in from China, Turkey, or elsewhere abroad, we source it, arrange the logistics, and get it to you.",
+    "The business is owned and run by Addo Benjamin Armah, and it is built on responsiveness and follow-through on every order."
+  ],
+  "doTitle": "What we do",
+  "services": [
+    {
+      "title": "Import services",
+      "text": "Sourcing and importing goods from China, Turkey and other overseas markets."
+    },
+    {
+      "title": "Consulting",
+      "text": "Business strategy, governance and organisational development."
+    },
+    {
+      "title": "Partnerships",
+      "text": "Investment facilitation and strategic partnerships across sectors."
+    }
+  ],
+  "ctaTitle": "Let's bring your order home",
+  "ctaText": "Tell us what you need and we'll send you a quote in Ghana cedis."
+}

@@ -11,7 +11,7 @@
 <meta name="theme-color" content="#ef0e52">
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body data-page="home">
 <header class="top">
   <div class="wrap">
     <a class="brand" href="index.html" aria-label="Lawbenpina Ventures home"><img src="logo.png" alt="Lawbenpina Ventures"></a>
@@ -30,9 +30,9 @@
 <div class="wrap hero">
   <div class="hero-grid">
     <div>
-      <span class="eyebrow">Accra, Ghana &middot; Import service</span>
-      <h1>Buy from Alibaba.<br>We handle the import.</h1>
-      <p class="lede">Found something on Alibaba? Send us the link. Not sure where to find it? Just describe what you want. We send you a quote in Ghana cedis, and once you accept, we source it and bring it to you.</p>
+      <span class="eyebrow" data-cms="eyebrow">Accra, Ghana &middot; Import service</span>
+      <h1 data-cms="title">Buy from Alibaba.<br>We handle the import.</h1>
+      <p class="lede" data-cms="intro">Found something on Alibaba? Send us the link. Not sure where to find it? Describe it or upload a photo. We send you a quote in Ghana cedis, and once you accept, we source it and bring it to you.</p>
       <div class="row">
         <a class="btn btn-primary" href="order.html">Place an order</a>
         <a class="btn btn-wa" data-wa="Hello, I would like to import something from Alibaba." href="https://wa.me/233577788857" target="_blank" rel="noopener">Chat on WhatsApp</a>
@@ -44,10 +44,10 @@
 
 <section>
   <div class="wrap">
-    <span class="eyebrow">Why Lawbenpina</span>
-    <h2>Importing made simple</h2>
-    <div class="cards3">
-      <div class="feat"><h3>A link or a description</h3><p>Paste an Alibaba link if you have one. If not, tell us in your own words what you want and we look for it.</p></div>
+    <span class="eyebrow" data-cms="whyEyebrow">Why Lawbenpina</span>
+    <h2 data-cms="whyTitle">Importing made simple</h2>
+    <div class="cards3" data-cms-list="features" data-tpl="feature">
+      <div class="feat"><h3>A link, a description or a photo</h3><p>Paste an Alibaba link if you have one. If not, tell us in your own words what you want, or upload a photo, and we look for it.</p></div>
       <div class="feat"><h3>A clear quote in cedis</h3><p>We check the price and send your total in Ghana cedis. Shipping is quoted separately, and nothing is bought until you accept.</p></div>
       <div class="feat"><h3>Delivered to you</h3><p>We handle the sourcing, shipping and delivery to your address in Ghana, in about <span class="js-days">55</span> days.</p></div>
     </div>
@@ -85,8 +85,8 @@
 <section>
   <div class="wrap">
     <div class="cta-band">
-      <h2>Ready to order?</h2>
-      <p>Send us the link or describe what you need. It takes about two minutes, and no payment is taken.</p>
+      <h2 data-cms="ctaTitle">Ready to order?</h2>
+      <p data-cms="ctaText">Send us a link, a description or a photo. It takes about two minutes, and no payment is taken.</p>
       <a class="btn btn-white" href="order.html">Place an order</a>
     </div>
   </div>

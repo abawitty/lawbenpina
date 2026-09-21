@@ -19,13 +19,15 @@ collections:
           - label: "Products"
             name: "products"
             widget: "list"
-            summary: "{{fields.name}} - GH₵ {{fields.price}}"
-            hint: "Add a product, or edit / delete an existing one. Products appear on the Shop page in this order."
+            label_singular: "product"
+            add_to_top: true
+            summary: "{{fields.name}} - GH₵ {{fields.price}} ({{fields.status}})"
+            hint: "Click a product to change its price, photo or availability. Use 'Add product' for a new one. Products appear on the Shop page in this order, newest first."
             fields:
               - { label: "Product name", name: "name", widget: "string", hint: "Keep the name unique. It is used to identify the product in customers' carts." }
               - { label: "Price (GH₵)", name: "price", widget: "number", value_type: "float", min: 0.01, step: 0.5 }
               - { label: "Category", name: "category", widget: "string", required: false, hint: "Optional, e.g. Kitchen, Electronics. Products with the same category can be filtered on the Shop page." }
-              - { label: "Photo", name: "image", widget: "image", hint: "Use a clear, square-ish photo under 1 MB so the page loads fast on phones." }
+              - { label: "Photo", name: "image", widget: "image", hint: "Use a clear, square-ish photo. Any size is fine, the website shrinks it automatically for phones." }
               - { label: "Description", name: "description", widget: "text", required: false }
               - label: "Availability"
                 name: "status"
@@ -34,6 +36,91 @@ collections:
                 options:
                   - { label: "In stock", value: "in_stock" }
                   - { label: "Sold out", value: "sold_out" }
+
+  - name: "pages"
+    label: "Page text"
+    files:
+      - file: "content/home.json"
+        label: "Home page"
+        name: "home"
+        fields:
+          - { label: "Small line above the headline", name: "eyebrow", widget: "string" }
+          - { label: "Headline", name: "title", widget: "text", hint: "Press Enter to start a new line." }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Section label", name: "whyEyebrow", widget: "string" }
+          - { label: "Section heading", name: "whyTitle", widget: "string" }
+          - label: "Three highlights"
+            name: "features"
+            widget: "list"
+            summary: "{{fields.title}}"
+            hint: "Tip: write {days} to show the delivery days from Site settings."
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Bottom banner heading", name: "ctaTitle", widget: "string" }
+          - { label: "Bottom banner text", name: "ctaText", widget: "text" }
+
+      - file: "content/shop.json"
+        label: "Shop page heading"
+        name: "shop"
+        fields:
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+
+      - file: "content/how.json"
+        label: "How it works page"
+        name: "how"
+        fields:
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - label: "Steps"
+            name: "steps"
+            widget: "list"
+            summary: "{{fields.title}}"
+            hint: "Tip: write {days} to show the delivery days from Site settings."
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Questions heading", name: "faqTitle", widget: "string" }
+          - label: "Questions and answers"
+            name: "faqs"
+            widget: "list"
+            summary: "{{fields.q}}"
+            hint: "To add a link inside an answer, write [link words](page.html), for example [Terms](terms.html). Write {days} to show the delivery days."
+            fields:
+              - { label: "Question", name: "q", widget: "string" }
+              - { label: "Answer", name: "a", widget: "text" }
+
+      - file: "content/about.json"
+        label: "About page"
+        name: "about"
+        fields:
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Story heading", name: "storyTitle", widget: "string" }
+          - label: "Story paragraphs"
+            name: "story"
+            widget: "list"
+            field: { label: "Paragraph", name: "text", widget: "text" }
+          - { label: "Services heading", name: "doTitle", widget: "string" }
+          - label: "Services"
+            name: "services"
+            widget: "list"
+            summary: "{{fields.title}}"
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Text", name: "text", widget: "text" }
+          - { label: "Bottom banner heading", name: "ctaTitle", widget: "string" }
+          - { label: "Bottom banner text", name: "ctaText", widget: "text" }
+
+      - file: "content/contact.json"
+        label: "Contact page"
+        name: "contact"
+        fields:
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - { label: "Facebook page link", name: "facebook", widget: "string", hint: "The full address, starting with https://" }
+          - { label: "Location", name: "location", widget: "string" }
 
   - name: "settings"
     label: "Site settings"

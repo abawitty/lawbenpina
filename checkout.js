@@ -44,7 +44,7 @@ function render() {
   $('cartLines').innerHTML = out.map((l) => `
     <article class="item cartline">
       <div class="cl-main">
-        <img class="cl-img" src="${esc(l.p.image)}" alt="${esc(l.p.name)}">
+        <img class="cl-img" ${LV.imgAttrs(l.p.image, 200)} alt="${esc(l.p.name)}">
         <div><h3>${esc(l.p.name)}</h3><div class="meta">${money(l.p.price)} each</div>
           <label class="qtylabel">Qty <input class="qty" type="number" min="1" max="99" step="1" value="${l.qty}" data-id="${esc(l.p.id)}" inputmode="numeric"></label></div>
       </div>
@@ -178,7 +178,7 @@ function finish(sent) {
   $('checkout').hidden = true; $('dropped').hidden = true;
   $('doneName').textContent = order.cust.c_name.split(' ')[0];
   $('doneRef').textContent = order.ref;
-  $('doneSummary').innerHTML = `<h3>Items</h3>${order.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" src="${esc(l.image)}" alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
+  $('doneSummary').innerHTML = `<h3>Items</h3>${order.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" ${LV.imgAttrs(l.image, 200)} alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
     <div class="totals"><div class="big"><span>Items total</span><span>${money(order.subP)}</span></div><div class="ship"><span>Delivery fee</span><span>Paid by you on delivery</span></div></div>
     <h3>Delivery details</h3>${custBlock(order.cust)}`;
   $('doneWa').href = LV.waHref(orderText(order));

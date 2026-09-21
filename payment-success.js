@@ -23,7 +23,7 @@ const waBtn = (text) => `<a class="btn btn-wa" href="${esc(LV.waHref(text))}" ta
 
 function summaryHtml(p, paid) {
   if (!p) return paid ? `<div class="totals"><div class="big"><span>Amount paid</span><span>${money(paid)}</span></div></div>` : '';
-  return `<h3>Items</h3>${p.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" src="${esc(l.image)}" alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
+  return `<h3>Items</h3>${p.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" ${LV.imgAttrs(l.image, 200)} alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
     <div class="totals"><div class="big"><span>Amount paid</span><span>${money(paid || p.subP)}</span></div>
     <div class="ship"><span>Delivery</span><span>Not included. You pay the delivery fee on delivery.</span></div></div>`;
 }

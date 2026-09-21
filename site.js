@@ -65,9 +65,45 @@ async function init() {
   document.querySelectorAll('[data-wa]').forEach((a) => (a.href = waHref(a.dataset.wa)));
   document.querySelectorAll('.js-days').forEach((el) => (el.textContent = cfg.arrivalDays));
   document.querySelectorAll('.js-phone').forEach((a) => { a.href = 'tel:+' + cfg.whatsapp; });
+  const digits = String(cfg.whatsapp).replace(/\D/g, '');
+  const pretty = /^233\d{9}$/.test(digits) ? `+233 ${digits.slice(3, 6)} ${digits.slice(6, 9)} ${digits.slice(9)}` : '+' + digits;
+  document.querySelectorAll('.js-phone-text').forEach((el) => (el.textContent = pretty));
 }
 const ready = init();
-window.LV = { cfg, ready, esc, money, waHref, slug, cart, loadProducts, updateCartCount };
+
+// ---------- images: on the live site, big uploads are resized by Netlify's Image CDN; falls back to the original ----------
+const onLive = location.protocol === 'https:' && !/^(localhost|127\.|\[::1\])/.test(location.hostname);
+const imgUrl = (src, w) => (onLive && String(src).startsWith('/') ? `/.netlify/images?url=${encodeURIComponent(src)}&w=${w}` : src);
+const imgAttrs = (src, w) => `src="${esc(imgUrl(src, w))}" onerror="this.onerror=null;this.src='${esc(src)}'"`;
+const setImg = (el, src, w) => { el.onerror = () => { el.onerror = null; el.src = src; }; el.src = imgUrl(src, w); };
+
+// ---------- editable page text: content/<page>.json (edited in the /admin dashboard) ----------
+const fmt = (s) => esc(s == null ? '' : s)
+  .replace(/\{days\}/g, esc(cfg.arrivalDays))
+  .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|[a-z0-9-]+\.html(?:#[\w-]*)?)\)/g, '<a class="link" href="$2">$1</a>')
+  .replace(/\n/g, '<br>');
+const TPL = {
+  feature: (i) => `<div class="feat"><h3>${fmt(i.title)}</h3><p>${fmt(i.text)}</p></div>`,
+  step: (i) => `<li><h3>${fmt(i.title)}</h3><p>${fmt(i.text)}</p></li>`,
+  faq: (i) => `<details><summary>${fmt(i.q)}</summary><p>${fmt(i.a)}</p></details>`,
+  para: (i) => `<p>${fmt(typeof i === 'string' ? i : i && i.text)}</p>`,
+};
+function applyCms(d) {
+  document.querySelectorAll('[data-cms]').forEach((el) => { const v = d[el.dataset.cms]; if (typeof v === 'string' && v.trim()) el.innerHTML = fmt(v); });
+  document.querySelectorAll('[data-cms-href]').forEach((el) => { const v = d[el.dataset.cmsHref]; if (typeof v === 'string' && /^https?:\/\//.test(v.trim())) el.href = v.trim(); });
+  document.querySelectorAll('[data-cms-list]').forEach((el) => {
+    const list = d[el.dataset.cmsList]; const tpl = TPL[el.dataset.tpl];
+    if (Array.isArray(list) && list.length && tpl) el.innerHTML = list.filter(Boolean).map(tpl).join('');
+  });
+}
+const pageName = document.body.dataset.page;
+if (pageName) {
+  ready.then(async () => {
+    try { const r = await fetch(`content/${pageName}.json`, { cache: 'no-cache' }); if (r.ok) applyCms(await r.json()); } catch (e) {}
+  });
+}
+
+window.LV = { cfg, ready, esc, money, waHref, slug, cart, loadProducts, updateCartCount, imgAttrs, setImg };
 
 // ---------- featured products on the home page ----------
 const featured = document.getElementById('featured');
@@ -77,7 +113,7 @@ if (featured) {
     if (!items.length) return;
     document.getElementById('featuredGrid').innerHTML = items.map((p) => `
       <a class="pcard" href="shop.html#${esc(p.id)}">
-        <img src="${esc(p.image)}" alt="${esc(p.name)}" loading="lazy">
+        <img ${imgAttrs(p.image, 600)} alt="${esc(p.name)}" loading="lazy">
         <div class="pinfo"><h3>${esc(p.name)}</h3><div class="pprice">${money(p.price)}</div></div>
       </a>`).join('');
     featured.hidden = false;
