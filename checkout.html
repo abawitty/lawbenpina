@@ -75,9 +75,10 @@
 
         <div class="consent">
           <label><input type="checkbox" id="k1"> <span>I have checked the items, quantities and prices above and I want to order them from Lawbenpina Ventures.</span></label>
-          <label><input type="checkbox" id="k2"> <span>I understand that availability, delivery cost and payment will be confirmed with me by Lawbenpina Ventures, and that nothing is charged at this step.</span></label>
+          <label><input type="checkbox" id="k2"> <span id="k2text">I understand that availability, delivery cost and payment will be confirmed with me by Lawbenpina Ventures, and that nothing is charged at this step.</span></label>
           <label><input type="checkbox" id="k3"> <span>I agree to the <a href="terms.html" target="_blank" rel="noopener" class="link">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener" class="link">Privacy Notice</a>.</span></label>
         </div>
+        <div class="alert info" id="payNote" hidden>You will pay for the items securely with Paystack, using mobile money or a card. Delivery is not included and is paid separately once we have worked out the cost.</div>
         <div class="alert warn" id="placeError" hidden></div>
         <div class="nav-row"><a class="btn" href="shop.html">&larr; Keep shopping</a><button class="btn btn-primary" id="placeBtn" type="button" disabled>Send my order</button></div>
       </div>
@@ -113,7 +114,7 @@
   <input name="order_ref"><input name="name"><input name="phone"><input name="whatsapp"><input name="email">
   <input name="address"><input name="city"><input name="region"><input name="digital_address"><input name="landmark">
   <textarea name="notes"></textarea><textarea name="items_summary"></textarea><textarea name="items_json"></textarea>
-  <input name="items_total_ghs"><input name="consent_time"><input name="consent_given">
+  <input name="items_total_ghs"><input name="payment_status"><input name="consent_time"><input name="consent_given">
 </form>
 
 <script src="site.js"></script>

@@ -12,6 +12,18 @@ const saveCust = () => { try { localStorage.setItem(CUST_KEY, JSON.stringify(rea
 try { Object.entries(JSON.parse(localStorage.getItem(CUST_KEY) || '{}')).forEach(([k, v]) => { const el = $(k); if (el && typeof v === 'string') el.value = v; }); } catch (e) {}
 
 let order = null;
+let curTotal = 0;
+
+// Online payment is only offered when the server says it is switched on (PAYSTACK_SECRET_KEY set).
+let payEnabled = false;
+try {
+  const r = await fetch('/.netlify/functions/pay-init');
+  if (r.ok && (r.headers.get('content-type') || '').includes('json')) payEnabled = Boolean((await r.json()).enabled);
+} catch (e) {}
+if (payEnabled) {
+  $('k2text').textContent = 'I understand that I am paying for the items only. The delivery cost will be worked out and sent to me and paid separately, and Lawbenpina Ventures will contact me to confirm availability and delivery.';
+  $('payNote').hidden = false;
+}
 
 // Cart lines always use the current products.json price; anything removed or sold out is dropped.
 function currentLines() {
@@ -39,6 +51,8 @@ function render() {
       <div class="price">${money(l.p.price * l.qty)}</div>
       <div class="acts"><button class="btn btn-sm" type="button" data-remove="${esc(l.p.id)}">Remove</button></div>
     </article>`).join('');
+  curTotal = subtotal(out);
+  btnReset();
   $('cartTotals').innerHTML = `<div class="big"><span>Items total</span><span>${money(subtotal(out))}</span></div>
     <div class="ship"><span>Delivery</span><span>To be confirmed by us</span></div>`;
 }
@@ -108,14 +122,47 @@ async function place() {
     order_ref: order.ref, name: c.c_name, phone: c.c_phone, whatsapp: c.c_whatsapp, email: c.c_email,
     address: c.c_address, city: c.c_city, region: c.c_region, digital_address: c.c_digital, landmark: c.c_landmark, notes: c.c_notes,
     items_summary: orderText(order), items_json: JSON.stringify(order.lines.map(({ id, name, qty, unitP, lineP }) => ({ id, name, qty, unitP, lineP }))),
-    items_total_ghs: (order.subP / 100).toFixed(2), consent_time: now.toISOString(),
-    consent_given: 'items+quantities+prices; availability, delivery and payment confirmed by seller, nothing charged; terms & privacy',
+    items_total_ghs: (order.subP / 100).toFixed(2), payment_status: 'To be arranged with the customer', consent_time: now.toISOString(),
+    consent_given: payEnabled
+      ? 'items+quantities+prices; paying items online via Paystack, delivery cost sent and paid separately, availability confirmed by seller; terms & privacy'
+      : 'items+quantities+prices; availability, delivery and payment confirmed by seller, nothing charged; terms & privacy',
   };
+
+  if (payEnabled) {
+    let res = null, j = null;
+    try {
+      res = await fetch('/.netlify/functions/pay-init', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          orderRef: order.ref, items: out.map((l) => ({ id: l.p.id, qty: l.qty })),
+          customer: { name: c.c_name, phone: c.c_phone, email: c.c_email, address: c.c_address, city: c.c_city, region: c.c_region },
+        }),
+      });
+      j = await res.json();
+    } catch (e) { res = null; }
+    if (res && res.ok && j && j.authorization_url) {
+      data.payment_status = `Awaiting online payment (Paystack reference ${j.reference})`;
+      try { localStorage.setItem('lv_pending_order', JSON.stringify({ ref: order.ref, payRef: j.reference, name: c.c_name.split(' ')[0], subP: order.subP, lines: order.lines })); } catch (e) {}
+      await sendForm(data); // records the order by email; the details are also stored with the Paystack payment
+      location.href = j.authorization_url;
+      return;
+    }
+    if (res && res.status >= 400 && res.status < 500 && j && j.error) {
+      btnReset(); render();
+      $('placeError').hidden = false; $('placeError').textContent = j.error;
+      $('placeBtn').disabled = false;
+      return;
+    }
+    // Payment service unavailable: fall through and send the order the old way.
+  }
+  finish(await sendForm(data));
+}
+
+async function sendForm(data) {
   try {
     const r = await fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data).toString() });
-    if (!r.ok) throw new Error('HTTP ' + r.status);
-    finish(true);
-  } catch (e) { finish(false); }
+    return r.ok;
+  } catch (e) { return false; }
 }
 
 function finish(sent) {
@@ -138,7 +185,7 @@ function finish(sent) {
   $('done').hidden = false;
   $('done').scrollIntoView({ behavior: 'smooth' });
 }
-function btnReset() { $('placeBtn').textContent = 'Send my order'; }
+function btnReset() { $('placeBtn').textContent = payEnabled ? `Pay ${money(curTotal)} now` : 'Send my order'; }
 $('placeBtn').addEventListener('click', place);
 $('printBtn').addEventListener('click', () => window.print());
 
