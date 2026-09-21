@@ -1,4 +1,4 @@
-'use strict';
+﻿'use strict';
 
 // Starts a Paystack payment for a shop cart.
 // The total is worked out HERE from products.json, never taken from the browser,
@@ -86,7 +86,7 @@ exports.handler = async (event) => {
         { display_name: 'Phone', variable_name: 'phone', value: clip(c.phone, 30) },
         { display_name: 'Items', variable_name: 'items', value: lines.join('; ').slice(0, 900) },
         { display_name: 'Delivery address', variable_name: 'address', value: address },
-        { display_name: 'Delivery cost', variable_name: 'delivery', value: 'To be confirmed and paid separately' },
+        { display_name: 'Delivery cost', variable_name: 'delivery', value: 'Paid by the customer on delivery' },
       ],
     },
   };

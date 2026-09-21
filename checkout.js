@@ -1,4 +1,4 @@
-(async () => {
+﻿(async () => {
 'use strict';
 await LV.ready;
 const { esc, money, cart } = LV;
@@ -21,7 +21,7 @@ try {
   if (r.ok && (r.headers.get('content-type') || '').includes('json')) payEnabled = Boolean((await r.json()).enabled);
 } catch (e) {}
 if (payEnabled) {
-  $('k2text').textContent = 'I understand that I am paying for the items only. The delivery cost will be worked out and sent to me and paid separately, and Lawbenpina Ventures will contact me to confirm availability and delivery.';
+  $('k2text').textContent = 'I understand that I am paying for the items only, that I pay the delivery fee on delivery, and that Lawbenpina Ventures will contact me to confirm availability and delivery.';
   $('payNote').hidden = false;
 }
 
@@ -54,7 +54,7 @@ function render() {
   curTotal = subtotal(out);
   btnReset();
   $('cartTotals').innerHTML = `<div class="big"><span>Items total</span><span>${money(subtotal(out))}</span></div>
-    <div class="ship"><span>Delivery</span><span>To be confirmed by us</span></div>`;
+    <div class="ship"><span>Delivery fee</span><span>Paid by you on delivery</span></div>`;
 }
 
 $('cartLines').addEventListener('change', (e) => {
@@ -94,7 +94,7 @@ function makeRef(d) {
 function orderText(o) {
   const lines = o.lines.map((l, i) => `${i + 1}. ${l.name}\n   ${l.qty} x ${money(l.unitP)} = ${money(l.lineP)}`);
   const c = o.cust;
-  return `Hello ${LV.cfg.businessName}, I would like to order from your shop.\nRef: ${o.ref}\n\nITEMS\n${lines.join('\n')}\n\nItems total: ${money(o.subP)}\nDelivery: to be confirmed\n\nName: ${c.c_name}\nPhone: ${c.c_phone}${c.c_whatsapp ? '\nWhatsApp: ' + c.c_whatsapp : ''}\nEmail: ${c.c_email}\nAddress: ${[c.c_address, c.c_city, c.c_region].filter(Boolean).join(', ')}${c.c_digital ? '\nDigital address: ' + c.c_digital : ''}${c.c_landmark ? '\nLandmark: ' + c.c_landmark : ''}${c.c_notes ? '\nNotes: ' + c.c_notes : ''}`;
+  return `Hello ${LV.cfg.businessName}, I would like to order from your shop.\nRef: ${o.ref}\n\nITEMS\n${lines.join('\n')}\n\nItems total: ${money(o.subP)}\nDelivery fee: paid by me on delivery\n\nName: ${c.c_name}\nPhone: ${c.c_phone}${c.c_whatsapp ? '\nWhatsApp: ' + c.c_whatsapp : ''}\nEmail: ${c.c_email}\nAddress: ${[c.c_address, c.c_city, c.c_region].filter(Boolean).join(', ')}${c.c_digital ? '\nDigital address: ' + c.c_digital : ''}${c.c_landmark ? '\nLandmark: ' + c.c_landmark : ''}${c.c_notes ? '\nNotes: ' + c.c_notes : ''}`;
 }
 
 async function place() {
@@ -124,8 +124,8 @@ async function place() {
     items_summary: orderText(order), items_json: JSON.stringify(order.lines.map(({ id, name, qty, unitP, lineP }) => ({ id, name, qty, unitP, lineP }))),
     items_total_ghs: (order.subP / 100).toFixed(2), payment_status: 'To be arranged with the customer', consent_time: now.toISOString(),
     consent_given: payEnabled
-      ? 'items+quantities+prices; paying items online via Paystack, delivery cost sent and paid separately, availability confirmed by seller; terms & privacy'
-      : 'items+quantities+prices; availability, delivery and payment confirmed by seller, nothing charged; terms & privacy',
+      ? 'items+quantities+prices; paying items online via Paystack, delivery fee paid by customer on delivery, availability confirmed by seller; terms & privacy'
+      : 'items+quantities+prices; availability and payment confirmed by seller, nothing charged, delivery fee paid on delivery; terms & privacy',
   };
 
   if (payEnabled) {
@@ -179,7 +179,7 @@ function finish(sent) {
   $('doneName').textContent = order.cust.c_name.split(' ')[0];
   $('doneRef').textContent = order.ref;
   $('doneSummary').innerHTML = `<h3>Items</h3>${order.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" src="${esc(l.image)}" alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
-    <div class="totals"><div class="big"><span>Items total</span><span>${money(order.subP)}</span></div><div class="ship"><span>Delivery</span><span>To be confirmed by us</span></div></div>
+    <div class="totals"><div class="big"><span>Items total</span><span>${money(order.subP)}</span></div><div class="ship"><span>Delivery fee</span><span>Paid by you on delivery</span></div></div>
     <h3>Delivery details</h3>${custBlock(order.cust)}`;
   $('doneWa').href = LV.waHref(orderText(order));
   $('done').hidden = false;

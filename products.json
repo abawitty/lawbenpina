@@ -1,3 +1,156 @@
-﻿{
-  "products": []
+{
+  "products": [
+    {
+      "name": "LED Ring Light with Tripod (10in / 26cm)",
+      "price": 150,
+      "category": "Electronics",
+      "image": "/images/products/led-ring-light-with-tripod-10in-26cm.jpg",
+      "description": "10-inch (26cm) LED ring light with tripod stand.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Vibrating Massage Neck Pillow",
+      "price": 350,
+      "category": "Health & Personal Care",
+      "image": "/images/products/vibrating-massage-neck-pillow.jpg",
+      "description": "Cervical neck pillow with vibration massage.",
+      "status": "in_stock"
+    },
+    {
+      "name": "SuoAi 15KG Fully Automatic Washing Machine",
+      "price": 4200,
+      "category": "Home Appliances",
+      "image": "/images/products/suoai-15kg-fully-automatic-washing-machine.jpg",
+      "description": "SuoAi 15KG fully automatic washing machine.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Smart Bedside Cabinet with Wireless Charging",
+      "price": 1700,
+      "category": "Furniture",
+      "image": "/images/products/smart-bedside-cabinet-with-wireless-charging.jpg",
+      "description": "Italian-style smart bedside cabinet with wireless charging.",
+      "status": "in_stock"
+    },
+    {
+      "name": "BoDaoLang Abdominal Massager Belt",
+      "price": 250,
+      "category": "Health & Personal Care",
+      "image": "/images/products/bodaolang-abdominal-massager-belt.jpg",
+      "description": "BoDaoLang abdominal massager belt.",
+      "status": "in_stock"
+    },
+    {
+      "name": "PD20W Fast Wall Charger",
+      "price": 25,
+      "category": "Phone Accessories",
+      "image": "/images/products/pd20w-fast-wall-charger.jpg",
+      "description": "PD 20W fast wall charger.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Smart Password-Lock Bedside Cabinet",
+      "price": 1800,
+      "category": "Furniture",
+      "image": "/images/products/smart-password-lock-bedside-cabinet.jpg",
+      "description": "Bedside cabinet with a smart password lock.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Wargod 4 Outdoor Bluetooth Speaker",
+      "price": 650,
+      "category": "Electronics",
+      "image": "/images/products/wargod-4-outdoor-bluetooth-speaker.jpg",
+      "description": "Outdoor Bluetooth speaker. Generic (unbranded) model.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Under-Sink Kitchen Organiser Rack",
+      "price": 240,
+      "category": "Kitchen & Home",
+      "image": "/images/products/under-sink-kitchen-organiser-rack.jpg",
+      "description": "Under-sink organiser rack for the kitchen.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Braided iPhone Data Cable",
+      "price": 20,
+      "category": "Phone Accessories",
+      "image": "/images/products/braided-iphone-data-cable.jpg",
+      "description": "Braided data cable for iPhone.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Power Bank (2,400mAh)",
+      "price": 80,
+      "category": "Phone Accessories",
+      "image": "/images/products/power-bank-2-400mah.jpg",
+      "description": "Portable power bank with a 2,400mAh cell.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Multi-Tier Kitchen Pot Rack",
+      "price": 150,
+      "category": "Kitchen & Home",
+      "image": "/images/products/multi-tier-kitchen-pot-rack.jpg",
+      "description": "Multi-tier pot rack for the kitchen.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Car Phone Holder with 15W Wireless Charger",
+      "price": 300,
+      "category": "Phone Accessories",
+      "image": "/images/products/car-phone-holder-with-15w-wireless-charger.jpg",
+      "description": "Car mount phone holder with 15W wireless charging.",
+      "status": "in_stock"
+    },
+    {
+      "name": "iPhone Braided Cable",
+      "price": 20,
+      "category": "Phone Accessories",
+      "image": "/images/products/iphone-braided-cable.jpg",
+      "description": "Braided cable for iPhone.",
+      "status": "in_stock"
+    },
+    {
+      "name": "YANGZI 12KG Fully Automatic Washing Machine",
+      "price": 3500,
+      "category": "Home Appliances",
+      "image": "/images/products/yangzi-12kg-fully-automatic-washing-machine.jpg",
+      "description": "YANGZI 12KG fully automatic washing machine.",
+      "status": "in_stock"
+    },
+    {
+      "name": "WeiPinLu Electric Water Flosser",
+      "price": 200,
+      "category": "Health & Personal Care",
+      "image": "/images/products/weipinlu-electric-water-flosser.jpg",
+      "description": "WeiPinLu electric water flosser (oral irrigator).",
+      "status": "in_stock"
+    },
+    {
+      "name": "Multi-Tier Shoe Rack (Thickened)",
+      "price": 120,
+      "category": "Kitchen & Home",
+      "image": "/images/products/multi-tier-shoe-rack-thickened.jpg",
+      "description": "Thickened multi-tier shoe rack.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Electric Digital Wrist Blood Pressure Monitor",
+      "price": 300,
+      "category": "Health & Personal Care",
+      "image": "/images/products/electric-digital-wrist-blood-pressure-monitor.jpg",
+      "description": "Electric digital blood pressure monitor worn on the wrist.",
+      "status": "in_stock"
+    },
+    {
+      "name": "Insulated Stainless-Steel Tumbler with Handle",
+      "price": 160,
+      "category": "Kitchen & Home",
+      "image": "/images/products/insulated-stainless-steel-tumbler-with-handle.jpg",
+      "description": "Insulated stainless-steel tumbler with handle. Generic (unbranded).",
+      "status": "in_stock"
+    }
+  ]
 }

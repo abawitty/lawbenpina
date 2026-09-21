@@ -1,4 +1,4 @@
-(async () => {
+﻿(async () => {
 'use strict';
 await LV.ready;
 const { esc, money, cart } = LV;
@@ -25,7 +25,7 @@ function summaryHtml(p, paid) {
   if (!p) return paid ? `<div class="totals"><div class="big"><span>Amount paid</span><span>${money(paid)}</span></div></div>` : '';
   return `<h3>Items</h3>${p.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" src="${esc(l.image)}" alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
     <div class="totals"><div class="big"><span>Amount paid</span><span>${money(paid || p.subP)}</span></div>
-    <div class="ship"><span>Delivery</span><span>Not included. We will send you the delivery cost to pay separately.</span></div></div>`;
+    <div class="ship"><span>Delivery</span><span>Not included. You pay the delivery fee on delivery.</span></div></div>`;
 }
 
 async function check() {
@@ -55,7 +55,7 @@ async function check() {
     const orderRef = v.order_ref || (pending && pending.ref) || '';
     show({
       eyebrow: 'Payment received', title: `Thank you${pending && pending.name ? ', ' + pending.name : ''}`,
-      msg: 'Your payment for the items was successful. We will contact you to confirm availability and to send the delivery cost, which is paid separately. Please keep your reference number.',
+      msg: 'Your payment for the items was successful. We will contact you to confirm availability and arrange delivery. The delivery fee is paid by you on delivery. Please keep your reference number.',
       ref: orderRef || ref, summary: summaryHtml(pending, v.amount),
       actions: `${waBtn('Hello, I have paid for order ' + (orderRef || ref) + '.')}<button class="btn" id="print" type="button">Print / save receipt</button>`,
     });
