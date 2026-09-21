@@ -13,6 +13,7 @@ try { Object.entries(JSON.parse(localStorage.getItem(CUST_KEY) || '{}')).forEach
 
 let order = null;
 let curTotal = 0;
+let payFallback = false;
 
 // Online payment is only offered when the server says it is switched on (PAYSTACK_SECRET_KEY set).
 let payEnabled = false;
@@ -153,7 +154,9 @@ async function place() {
       $('placeBtn').disabled = false;
       return;
     }
-    // Payment service unavailable: fall through and send the order the old way.
+    // Payment service unavailable: send the order the old way, and say so (to the customer and in the order email).
+    payFallback = true;
+    data.payment_status = `Online payment could not start${j && j.detail ? ' (' + j.detail + ')' : ''}. Arrange payment with the customer.`;
   }
   finish(await sendForm(data));
 }
@@ -178,6 +181,9 @@ function finish(sent) {
   $('checkout').hidden = true; $('dropped').hidden = true;
   $('doneName').textContent = order.cust.c_name.split(' ')[0];
   $('doneRef').textContent = order.ref;
+  if (payFallback) {
+    $('done').querySelector('.done-box').insertAdjacentHTML('beforeend', '<div class="alert info" style="text-align:left;margin-top:14px;">Online payment is not available right now, so nothing has been charged. We will send you payment details when we contact you.</div>');
+  }
   $('doneSummary').innerHTML = `<h3>Items</h3>${order.lines.map((l) => `<article class="item cartline"><div class="cl-main"><img class="cl-img" ${LV.imgAttrs(l.image, 200)} alt=""><div><h3>${esc(l.name)}</h3><div class="meta">${l.qty} × ${money(l.unitP)}</div></div></div><div class="price">${money(l.lineP)}</div></article>`).join('')}
     <div class="totals"><div class="big"><span>Items total</span><span>${money(order.subP)}</span></div><div class="ship"><span>Delivery fee</span><span>Paid by you on delivery</span></div></div>
     <h3>Delivery details</h3>${custBlock(order.cust)}`;
