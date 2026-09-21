@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your cart | Lawbenpina Ventures</title>
+<meta name="description" content="Review your cart and send your order to Lawbenpina Ventures.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" type="image/png" href="favicon.png">
+<meta name="theme-color" content="#ef0e52">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html" aria-label="Lawbenpina Ventures home"><img src="logo.png" alt="Lawbenpina Ventures"></a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
+    <nav id="mainNav">
+      <a href="index.html">Home</a>
+      <a class="active" href="shop.html">Shop</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="btn btn-primary btn-sm" href="order.html">Place an order</a>
+    </nav>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="wrap">
+    <span class="eyebrow">Shop</span>
+    <h1>Your cart</h1>
+    <p>Check your items, add your delivery details, and send your order. We'll contact you to confirm and arrange payment.</p>
+  </div>
+</div>
+
+<section class="tight" id="main">
+  <div class="wrap">
+    <div class="alert info" id="dropped" hidden>Some items in your cart are no longer available and were removed.</div>
+
+    <div class="card" id="cartEmpty" hidden style="text-align:center;padding:40px 22px;">
+      <h3>Your cart is empty</h3>
+      <p style="margin:8px 0 18px;">Browse the shop and add something you like.</p>
+      <a class="btn btn-primary" href="shop.html">Go to the shop</a>
+    </div>
+
+    <div id="checkout" hidden>
+      <div class="card" id="cartCard">
+        <h3>Items</h3>
+        <div id="cartLines" style="margin-top:10px;"></div>
+        <div class="totals" id="cartTotals"></div>
+      </div>
+
+      <div class="card" id="detailsCard" style="margin-top:18px;">
+        <h3>Your details</h3>
+        <p class="muted" style="margin-bottom:14px;">We use these to contact you and deliver your order.</p>
+        <form id="custForm" novalidate>
+          <div class="grid">
+            <div class="full"><label for="c_name">Full name</label><input id="c_name" type="text" autocomplete="name" required></div>
+            <div><label for="c_phone">Phone number</label><input id="c_phone" type="tel" autocomplete="tel" placeholder="024 000 0000" required></div>
+            <div><label for="c_whatsapp">WhatsApp number <small>(if different)</small></label><input id="c_whatsapp" type="tel"></div>
+            <div class="full"><label for="c_email">Email address</label><input id="c_email" type="email" autocomplete="email" required></div>
+            <div class="full"><label for="c_address">Residential address</label><input id="c_address" type="text" autocomplete="street-address" required></div>
+            <div><label for="c_city">Town / city</label><input id="c_city" type="text" autocomplete="address-level2" required></div>
+            <div><label for="c_region">Region</label>
+              <select id="c_region" required><option value="">Select region</option>
+                <option>Greater Accra</option><option>Ashanti</option><option>Western</option><option>Western North</option><option>Central</option><option>Eastern</option><option>Volta</option><option>Oti</option><option>Northern</option><option>Savannah</option><option>North East</option><option>Upper East</option><option>Upper West</option><option>Bono</option><option>Bono East</option><option>Ahafo</option>
+              </select></div>
+            <div><label for="c_digital">Ghana Post digital address <small>(optional)</small></label><input id="c_digital" type="text" placeholder="GA-123-4567"></div>
+            <div><label for="c_landmark">Landmark / directions <small>(optional)</small></label><input id="c_landmark" type="text"></div>
+            <div class="full"><label for="c_notes">Anything else we should know? <small>(optional)</small></label><textarea id="c_notes"></textarea></div>
+          </div>
+        </form>
+
+        <div class="consent">
+          <label><input type="checkbox" id="k1"> <span>I have checked the items, quantities and prices above and I want to order them from Lawbenpina Ventures.</span></label>
+          <label><input type="checkbox" id="k2"> <span>I understand that availability, delivery cost and payment will be confirmed with me by Lawbenpina Ventures, and that nothing is charged at this step.</span></label>
+          <label><input type="checkbox" id="k3"> <span>I agree to the <a href="terms.html" target="_blank" rel="noopener" class="link">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener" class="link">Privacy Notice</a>.</span></label>
+        </div>
+        <div class="alert warn" id="placeError" hidden></div>
+        <div class="nav-row"><a class="btn" href="shop.html">&larr; Keep shopping</a><button class="btn btn-primary" id="placeBtn" type="button" disabled>Send my order</button></div>
+      </div>
+    </div>
+
+    <div class="card" id="done" hidden>
+      <div class="done-box">
+        <span class="eyebrow">Order received</span>
+        <h2 style="margin-top:8px;">Thank you, <span id="doneName"></span></h2>
+        <div class="ref" id="doneRef"></div>
+        <p>Your order has been sent to us. We will contact you to confirm availability, delivery and payment. Keep your reference number handy.</p>
+      </div>
+      <div class="review" id="doneSummary"></div>
+      <div class="row no-print" style="margin-top:20px;justify-content:center;">
+        <a class="btn btn-wa" id="doneWa" href="#" target="_blank" rel="noopener">Send this order on WhatsApp</a>
+        <button class="btn" id="printBtn" type="button">Print / save summary</button>
+      </div>
+      <p class="muted no-print" style="text-align:center;margin-top:12px;">Tap the WhatsApp button and press send so we can reach you faster.</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-brand"><img src="logo.png" alt="Lawbenpina Ventures"><span>&copy; <span class="js-year"></span> Lawbenpina Ventures, Accra, Ghana</span></div>
+    <div class="foot-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="how-it-works.html">How it works</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+  </div>
+</footer>
+
+<!-- Registers the form with Netlify so shop orders arrive by email. Filled and submitted by checkout.js. -->
+<form name="store-order" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+  <input name="bot-field">
+  <input name="order_ref"><input name="name"><input name="phone"><input name="whatsapp"><input name="email">
+  <input name="address"><input name="city"><input name="region"><input name="digital_address"><input name="landmark">
+  <textarea name="notes"></textarea><textarea name="items_summary"></textarea><textarea name="items_json"></textarea>
+  <input name="items_total_ghs"><input name="consent_time"><input name="consent_given">
+</form>
+
+<script src="site.js"></script>
+<script src="checkout.js"></script>
+</body>
+</html>

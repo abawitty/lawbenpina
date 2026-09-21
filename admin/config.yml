@@ -1,0 +1,48 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "images/products"
+public_folder: "/images/products"
+
+site_url: https://www.lawbenpina.online
+display_url: https://www.lawbenpina.online
+
+collections:
+  - name: "shop"
+    label: "Shop"
+    files:
+      - file: "products.json"
+        label: "Products"
+        name: "products"
+        fields:
+          - label: "Products"
+            name: "products"
+            widget: "list"
+            summary: "{{fields.name}} - GH₵ {{fields.price}}"
+            hint: "Add a product, or edit / delete an existing one. Products appear on the Shop page in this order."
+            fields:
+              - { label: "Product name", name: "name", widget: "string", hint: "Keep the name unique. It is used to identify the product in customers' carts." }
+              - { label: "Price (GH₵)", name: "price", widget: "number", value_type: "float", min: 0.01, step: 0.5 }
+              - { label: "Category", name: "category", widget: "string", required: false, hint: "Optional, e.g. Kitchen, Electronics. Products with the same category can be filtered on the Shop page." }
+              - { label: "Photo", name: "image", widget: "image", hint: "Use a clear, square-ish photo under 1 MB so the page loads fast on phones." }
+              - { label: "Description", name: "description", widget: "text", required: false }
+              - label: "Availability"
+                name: "status"
+                widget: "select"
+                default: "in_stock"
+                options:
+                  - { label: "In stock", value: "in_stock" }
+                  - { label: "Sold out", value: "sold_out" }
+
+  - name: "settings"
+    label: "Site settings"
+    files:
+      - file: "settings.json"
+        label: "Business settings"
+        name: "settings"
+        fields:
+          - { label: "Business name", name: "businessName", widget: "string" }
+          - { label: "WhatsApp number (international format, no + or spaces)", name: "whatsapp", widget: "string", hint: "e.g. 233577788857" }
+          - { label: "Estimated delivery (days)", name: "arrivalDays", widget: "number", value_type: "int", min: 1 }
+          - { label: "Service charge for imports (%)", name: "markupPercent", widget: "number", value_type: "float", min: 0 }

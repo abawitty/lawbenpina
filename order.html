@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -18,6 +18,7 @@
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="mainNav">Menu</button>
     <nav id="mainNav">
       <a href="index.html">Home</a>
+      <a href="shop.html">Shop</a>
       <a href="how-it-works.html">How it works</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
@@ -30,7 +31,7 @@
   <div class="wrap">
     <span class="eyebrow">Place an order</span>
     <h1>Tell us what you want</h1>
-    <p>Send an Alibaba link, or just describe the item. We check the price, send you a quote in Ghana cedis, and nothing is bought until you accept.</p>
+    <p>Send an Alibaba link, describe the item, or upload a photo. We check the price, send you a quote in Ghana cedis, and nothing is bought until you accept.</p>
   </div>
 </div>
 
@@ -50,6 +51,7 @@
           <div class="seg" role="radiogroup" aria-label="How do you want to add this item?">
             <label class="seg-opt"><input type="radio" name="i_type" value="link" checked><span>I have an Alibaba link</span></label>
             <label class="seg-opt"><input type="radio" name="i_type" value="desc"><span>I'll describe what I want</span></label>
+            <label class="seg-opt"><input type="radio" name="i_type" value="photo"><span>I have a photo</span></label>
           </div>
           <div class="grid">
             <div class="full" id="rowLink">
@@ -61,6 +63,15 @@
               <label for="i_desc">Describe what you want</label>
               <textarea id="i_desc" maxlength="500" placeholder="e.g. Rechargeable desk fan, white, quiet, USB powered"></textarea>
               <div class="help">Include the type, size, colour, model or anything else that matters. You can send photos on WhatsApp after you send your request.</div>
+            </div>
+            <div class="full" id="rowPhoto" hidden>
+              <label for="i_photo">Photo of what you want</label>
+              <input id="i_photo" type="file" accept="image/*">
+              <div class="alert warn" id="photoErr" hidden></div>
+              <img id="photoPreview" class="thumb" alt="Preview of your photo" hidden>
+              <label for="i_pnote" style="margin-top:12px;">Details <small>(size, colour, model or anything that matters, optional)</small></label>
+              <textarea id="i_pnote" maxlength="500" placeholder="e.g. Same as the photo, but in black. Size medium."></textarea>
+              <div class="help">Screenshots and pictures from social media work too. You can attach up to 5 photos per request.</div>
             </div>
             <div><label for="i_qty">Quantity</label><input id="i_qty" type="number" min="1" step="1" inputmode="numeric" value="1" required></div>
           </div>
@@ -100,7 +111,7 @@
       <div id="p3" hidden>
         <div class="review" id="reviewBox"></div>
         <div class="consent">
-          <label><input type="checkbox" id="k1"> <span>I have checked the items and quantities above and I want Lawbenpina Ventures to check the price on Alibaba (or find a matching product, where I described what I want) and send me a quote.</span></label>
+          <label><input type="checkbox" id="k1"> <span>I have checked the items and quantities above and I want Lawbenpina Ventures to check the price on Alibaba (or find a matching product, where I described what I want or uploaded a photo) and send me a quote.</span></label>
           <label><input type="checkbox" id="k2"> <span>I understand that the price and the shipping cost will be sent to me separately, and that nothing is bought or paid for until I accept my quote.</span></label>
           <label><input type="checkbox" id="k3"> <span>I understand the arrival date is only an estimate, and I agree to the <a href="terms.html" target="_blank" rel="noopener" class="link">Terms</a> and <a href="privacy.html" target="_blank" rel="noopener" class="link">Privacy Notice</a>.</span></label>
         </div>
@@ -131,13 +142,14 @@
 <footer>
   <div class="wrap">
     <div class="foot-brand"><img src="logo.png" alt="Lawbenpina Ventures"><span>&copy; <span class="js-year"></span> Lawbenpina Ventures, Accra, Ghana</span></div>
-    <div class="foot-links"><a href="index.html">Home</a><a href="how-it-works.html">How it works</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
+    <div class="foot-links"><a href="index.html">Home</a><a href="shop.html">Shop</a><a href="how-it-works.html">How it works</a><a href="about.html">About</a><a href="contact.html">Contact</a><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></div>
   </div>
 </footer>
 
 <!-- Registers the form with Netlify so orders arrive by email. Filled and submitted by app.js. -->
-<form name="order" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
+<form name="order" method="POST" enctype="multipart/form-data" data-netlify="true" netlify-honeypot="bot-field" hidden>
   <input name="bot-field">
+  <input type="file" name="photo_1"><input type="file" name="photo_2"><input type="file" name="photo_3"><input type="file" name="photo_4"><input type="file" name="photo_5">
   <input name="order_ref"><input name="name"><input name="phone"><input name="whatsapp"><input name="email">
   <input name="address"><input name="city"><input name="region"><input name="digital_address"><input name="landmark">
   <textarea name="notes"></textarea><textarea name="items_summary"></textarea><textarea name="items_json"></textarea>
