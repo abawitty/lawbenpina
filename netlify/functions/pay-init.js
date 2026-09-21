@@ -101,11 +101,12 @@ exports.handler = async (event) => {
     data = await res.json();
   } catch (e) {
     console.error('Paystack request failed', e);
-    return json(502, { error: 'We could not reach the payment service. Please try again.' });
+    return json(502, { error: 'We could not reach the payment service. Please try again.', detail: 'network error' });
   }
   if (!res.ok || !data || !data.status || !data.data || !data.data.authorization_url) {
     console.error('Paystack rejected the payment', res.status, data && data.message);
-    return json(502, { error: 'The payment service could not start your payment. Please try again.' });
+    // `detail` is Paystack's own reason (never the key); the checkout page only shows `error`.
+    return json(502, { error: 'The payment service could not start your payment. Please try again.', detail: `Paystack ${res.status}: ${clip(data && data.message, 200)}` });
   }
   return json(200, { authorization_url: data.data.authorization_url, reference: data.data.reference || reference, amount });
 };
