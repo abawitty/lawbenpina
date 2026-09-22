@@ -45,6 +45,8 @@ async function loadProducts() {
         id: slug(p.name), name: String(p.name), price: Math.round(Number(p.price) * 100),
         category: p.category ? String(p.category) : '', description: p.description ? String(p.description) : '',
         image: String(p.image), inStock: p.status !== 'sold_out',
+        // The main Photo (edited in the dashboard) always leads the gallery, even if the extra photos list is now stale.
+        gallery: [String(p.image), ...(Array.isArray(p.gallery) ? p.gallery.filter((g) => typeof g === 'string' && g !== p.image) : [])],
       }));
   } catch (e) { return []; }
 }

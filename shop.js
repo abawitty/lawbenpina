@@ -24,11 +24,24 @@ function renderGrid() {
     </button>`).join('');
 }
 
+function showPhoto(src) {
+  LV.setImg($('pdImg'), src, 1000);
+  $('pdThumbs').querySelectorAll('.pdlg-thumb').forEach((b) => b.classList.toggle('on', b.dataset.src === src));
+}
+$('pdThumbs').addEventListener('click', (e) => { const b = e.target.closest('.pdlg-thumb'); if (b) showPhoto(b.dataset.src); });
+
 function openProduct(id) {
   const p = products.find((x) => x.id === id);
   if (!p) return;
   current = p;
-  LV.setImg($('pdImg'), p.image, 1000); $('pdImg').alt = p.name;
+  showPhoto(p.gallery[0]);
+  const thumbs = $('pdThumbs');
+  if (p.gallery.length > 1) {
+    thumbs.hidden = false;
+    thumbs.innerHTML = p.gallery.map((src, i) => `<button type="button" class="pdlg-thumb${i === 0 ? ' on' : ''}" data-src="${esc(src)}"><img ${LV.imgAttrs(src, 160)} alt="${esc(p.name)} photo ${i + 1}"></button>`).join('');
+  } else {
+    thumbs.hidden = true; thumbs.innerHTML = '';
+  }
   $('pdCat').textContent = p.category;
   $('pdName').textContent = p.name;
   $('pdPrice').textContent = money(p.price);

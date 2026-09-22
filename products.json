@@ -6,7 +6,15 @@
       "category": "Electronics",
       "image": "/images/products/led-ring-light-with-tripod-10in-26cm.jpg",
       "description": "10-inch (26cm) LED ring light with tripod stand.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/led-ring-light-with-tripod-10in-26cm.jpg",
+        "/images/products/led-ring-light-with-tripod-10in-26cm-2.jpg",
+        "/images/products/led-ring-light-with-tripod-10in-26cm-3.jpg",
+        "/images/products/led-ring-light-with-tripod-10in-26cm-4.jpg",
+        "/images/products/led-ring-light-with-tripod-10in-26cm-5.jpg",
+        "/images/products/led-ring-light-with-tripod-10in-26cm-6.jpg"
+      ]
     },
     {
       "name": "Vibrating Massage Neck Pillow",
@@ -14,7 +22,14 @@
       "category": "Health & Personal Care",
       "image": "/images/products/vibrating-massage-neck-pillow.jpg",
       "description": "Cervical neck pillow with vibration massage.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/vibrating-massage-neck-pillow.jpg",
+        "/images/products/vibrating-massage-neck-pillow-2.jpg",
+        "/images/products/vibrating-massage-neck-pillow-3.jpg",
+        "/images/products/vibrating-massage-neck-pillow-4.jpg",
+        "/images/products/vibrating-massage-neck-pillow-5.jpg"
+      ]
     },
     {
       "name": "SuoAi 15KG Fully Automatic Washing Machine",
@@ -22,7 +37,15 @@
       "category": "Home Appliances",
       "image": "/images/products/suoai-15kg-fully-automatic-washing-machine.jpg",
       "description": "SuoAi 15KG fully automatic washing machine.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/suoai-15kg-fully-automatic-washing-machine.jpg",
+        "/images/products/suoai-15kg-fully-automatic-washing-machine-2.jpg",
+        "/images/products/suoai-15kg-fully-automatic-washing-machine-3.jpg",
+        "/images/products/suoai-15kg-fully-automatic-washing-machine-4.jpg",
+        "/images/products/suoai-15kg-fully-automatic-washing-machine-5.jpg",
+        "/images/products/suoai-15kg-fully-automatic-washing-machine-6.jpg"
+      ]
     },
     {
       "name": "Smart Bedside Cabinet with Wireless Charging",
@@ -38,7 +61,15 @@
       "category": "Health & Personal Care",
       "image": "/images/products/bodaolang-abdominal-massager-belt.jpg",
       "description": "BoDaoLang abdominal massager belt.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/bodaolang-abdominal-massager-belt.jpg",
+        "/images/products/bodaolang-abdominal-massager-belt-2.jpg",
+        "/images/products/bodaolang-abdominal-massager-belt-3.jpg",
+        "/images/products/bodaolang-abdominal-massager-belt-4.jpg",
+        "/images/products/bodaolang-abdominal-massager-belt-5.jpg",
+        "/images/products/bodaolang-abdominal-massager-belt-6.jpg"
+      ]
     },
     {
       "name": "PD20W Fast Wall Charger",
@@ -46,7 +77,12 @@
       "category": "Phone Accessories",
       "image": "/images/products/pd20w-fast-wall-charger.jpg",
       "description": "PD 20W fast wall charger.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/pd20w-fast-wall-charger.jpg",
+        "/images/products/pd20w-fast-wall-charger-2.jpg",
+        "/images/products/pd20w-fast-wall-charger-3.jpg"
+      ]
     },
     {
       "name": "Smart Password-Lock Bedside Cabinet",
@@ -54,7 +90,16 @@
       "category": "Furniture",
       "image": "/images/products/smart-password-lock-bedside-cabinet.jpg",
       "description": "Bedside cabinet with a smart password lock.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/smart-password-lock-bedside-cabinet.jpg",
+        "/images/products/smart-password-lock-bedside-cabinet-2.jpg",
+        "/images/products/smart-password-lock-bedside-cabinet-3.jpg",
+        "/images/products/smart-password-lock-bedside-cabinet-4.jpg",
+        "/images/products/smart-password-lock-bedside-cabinet-5.jpg",
+        "/images/products/smart-password-lock-bedside-cabinet-6.jpg",
+        "/images/products/smart-password-lock-bedside-cabinet-7.jpg"
+      ]
     },
     {
       "name": "Wargod 4 Outdoor Bluetooth Speaker",
@@ -62,7 +107,15 @@
       "category": "Electronics",
       "image": "/images/products/wargod-4-outdoor-bluetooth-speaker.jpg",
       "description": "Outdoor Bluetooth speaker. Generic (unbranded) model.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/wargod-4-outdoor-bluetooth-speaker.jpg",
+        "/images/products/wargod-4-outdoor-bluetooth-speaker-2.jpg",
+        "/images/products/wargod-4-outdoor-bluetooth-speaker-3.jpg",
+        "/images/products/wargod-4-outdoor-bluetooth-speaker-4.jpg",
+        "/images/products/wargod-4-outdoor-bluetooth-speaker-5.jpg",
+        "/images/products/wargod-4-outdoor-bluetooth-speaker-6.jpg"
+      ]
     },
     {
       "name": "Under-Sink Kitchen Organiser Rack",
@@ -70,7 +123,13 @@
       "category": "Kitchen & Home",
       "image": "/images/products/under-sink-kitchen-organiser-rack.jpg",
       "description": "Under-sink organiser rack for the kitchen.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/under-sink-kitchen-organiser-rack.jpg",
+        "/images/products/under-sink-kitchen-organiser-rack-2.jpg",
+        "/images/products/under-sink-kitchen-organiser-rack-3.jpg",
+        "/images/products/under-sink-kitchen-organiser-rack-4.jpg"
+      ]
     },
     {
       "name": "Braided iPhone Data Cable",
@@ -78,7 +137,14 @@
       "category": "Phone Accessories",
       "image": "/images/products/braided-iphone-data-cable.jpg",
       "description": "Braided data cable for iPhone.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/braided-iphone-data-cable.jpg",
+        "/images/products/braided-iphone-data-cable-2.jpg",
+        "/images/products/braided-iphone-data-cable-3.jpg",
+        "/images/products/braided-iphone-data-cable-4.jpg",
+        "/images/products/braided-iphone-data-cable-5.jpg"
+      ]
     },
     {
       "name": "Power Bank (2,400mAh)",
@@ -94,7 +160,15 @@
       "category": "Kitchen & Home",
       "image": "/images/products/multi-tier-kitchen-pot-rack.jpg",
       "description": "Multi-tier pot rack for the kitchen.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/multi-tier-kitchen-pot-rack.jpg",
+        "/images/products/multi-tier-kitchen-pot-rack-2.jpg",
+        "/images/products/multi-tier-kitchen-pot-rack-3.jpg",
+        "/images/products/multi-tier-kitchen-pot-rack-4.jpg",
+        "/images/products/multi-tier-kitchen-pot-rack-5.jpg",
+        "/images/products/multi-tier-kitchen-pot-rack-6.jpg"
+      ]
     },
     {
       "name": "Car Phone Holder with 15W Wireless Charger",
@@ -102,15 +176,30 @@
       "category": "Phone Accessories",
       "image": "/images/products/car-phone-holder-with-15w-wireless-charger.jpg",
       "description": "Car mount phone holder with 15W wireless charging.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/car-phone-holder-with-15w-wireless-charger.jpg",
+        "/images/products/car-phone-holder-with-15w-wireless-charger-2.jpg",
+        "/images/products/car-phone-holder-with-15w-wireless-charger-3.jpg",
+        "/images/products/car-phone-holder-with-15w-wireless-charger-4.jpg",
+        "/images/products/car-phone-holder-with-15w-wireless-charger-5.jpg",
+        "/images/products/car-phone-holder-with-15w-wireless-charger-6.jpg"
+      ]
     },
     {
       "name": "iPhone Braided Cable",
       "price": 20,
       "category": "Phone Accessories",
-      "image": "/images/products/iphone-braided-cable.jpg",
+      "image": "/images/products/braided-iphone-data-cable.jpg",
       "description": "Braided cable for iPhone.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/braided-iphone-data-cable.jpg",
+        "/images/products/braided-iphone-data-cable-2.jpg",
+        "/images/products/braided-iphone-data-cable-3.jpg",
+        "/images/products/braided-iphone-data-cable-4.jpg",
+        "/images/products/braided-iphone-data-cable-5.jpg"
+      ]
     },
     {
       "name": "YANGZI 12KG Fully Automatic Washing Machine",
@@ -118,7 +207,14 @@
       "category": "Home Appliances",
       "image": "/images/products/yangzi-12kg-fully-automatic-washing-machine.jpg",
       "description": "YANGZI 12KG fully automatic washing machine.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/yangzi-12kg-fully-automatic-washing-machine.jpg",
+        "/images/products/yangzi-12kg-fully-automatic-washing-machine-2.jpg",
+        "/images/products/yangzi-12kg-fully-automatic-washing-machine-3.jpg",
+        "/images/products/yangzi-12kg-fully-automatic-washing-machine-4.jpg",
+        "/images/products/yangzi-12kg-fully-automatic-washing-machine-5.jpg"
+      ]
     },
     {
       "name": "WeiPinLu Electric Water Flosser",
@@ -126,7 +222,15 @@
       "category": "Health & Personal Care",
       "image": "/images/products/weipinlu-electric-water-flosser.jpg",
       "description": "WeiPinLu electric water flosser (oral irrigator).",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/weipinlu-electric-water-flosser.jpg",
+        "/images/products/weipinlu-electric-water-flosser-2.jpg",
+        "/images/products/weipinlu-electric-water-flosser-3.jpg",
+        "/images/products/weipinlu-electric-water-flosser-4.jpg",
+        "/images/products/weipinlu-electric-water-flosser-5.jpg",
+        "/images/products/weipinlu-electric-water-flosser-6.jpg"
+      ]
     },
     {
       "name": "Multi-Tier Shoe Rack (Thickened)",
@@ -134,7 +238,14 @@
       "category": "Kitchen & Home",
       "image": "/images/products/multi-tier-shoe-rack-thickened.jpg",
       "description": "Thickened multi-tier shoe rack.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/multi-tier-shoe-rack-thickened.jpg",
+        "/images/products/multi-tier-shoe-rack-thickened-2.jpg",
+        "/images/products/multi-tier-shoe-rack-thickened-3.jpg",
+        "/images/products/multi-tier-shoe-rack-thickened-4.jpg",
+        "/images/products/multi-tier-shoe-rack-thickened-5.jpg"
+      ]
     },
     {
       "name": "Electric Digital Wrist Blood Pressure Monitor",
@@ -142,7 +253,15 @@
       "category": "Health & Personal Care",
       "image": "/images/products/electric-digital-wrist-blood-pressure-monitor.jpg",
       "description": "Electric digital blood pressure monitor worn on the wrist.",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/electric-digital-wrist-blood-pressure-monitor.jpg",
+        "/images/products/electric-digital-wrist-blood-pressure-monitor-2.jpg",
+        "/images/products/electric-digital-wrist-blood-pressure-monitor-3.jpg",
+        "/images/products/electric-digital-wrist-blood-pressure-monitor-4.jpg",
+        "/images/products/electric-digital-wrist-blood-pressure-monitor-5.jpg",
+        "/images/products/electric-digital-wrist-blood-pressure-monitor-6.jpg"
+      ]
     },
     {
       "name": "Insulated Stainless-Steel Tumbler with Handle",
@@ -150,7 +269,15 @@
       "category": "Kitchen & Home",
       "image": "/images/products/insulated-stainless-steel-tumbler-with-handle.jpg",
       "description": "Insulated stainless-steel tumbler with handle. Generic (unbranded).",
-      "status": "in_stock"
+      "status": "in_stock",
+      "gallery": [
+        "/images/products/insulated-stainless-steel-tumbler-with-handle.jpg",
+        "/images/products/insulated-stainless-steel-tumbler-with-handle-2.jpg",
+        "/images/products/insulated-stainless-steel-tumbler-with-handle-3.jpg",
+        "/images/products/insulated-stainless-steel-tumbler-with-handle-4.jpg",
+        "/images/products/insulated-stainless-steel-tumbler-with-handle-5.jpg",
+        "/images/products/insulated-stainless-steel-tumbler-with-handle-6.jpg"
+      ]
     }
   ]
 }
