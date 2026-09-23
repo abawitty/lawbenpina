@@ -130,6 +130,23 @@ section.tight{border-top:none;padding-top:40px;}
 .cards3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:22px;}
 @media(max-width:760px){.cards3{grid-template-columns:1fr;}}
 .feat{border:1px solid var(--line);border-radius:14px;padding:22px;background:var(--card);}
+.guide-card{display:block;text-decoration:none;color:inherit;transition:.15s;}
+.guide-card:hover{border-color:var(--pink);transform:translateY(-2px);box-shadow:0 8px 22px rgba(239,14,82,.08);}
+.guide-card p{font-size:14.5px;margin-top:6px;}
+.guides-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:22px;}
+@media(max-width:700px){.guides-grid{grid-template-columns:1fr;}}
+article.prose{max-width:720px;margin:0 auto;}
+article.prose h2{font-size:24px;margin-top:36px;}
+article.prose h3{font-size:18px;margin-top:22px;}
+article.prose p{margin-top:14px;font-size:16.5px;line-height:1.7;}
+article.prose ul,article.prose ol{margin-top:14px;padding-left:24px;font-size:16.5px;line-height:1.7;color:#4a3540;}
+article.prose li{margin-top:6px;}
+article.prose table{width:100%;border-collapse:collapse;margin-top:18px;font-size:15px;}
+article.prose th,article.prose td{border:1px solid var(--line);padding:10px 12px;text-align:left;}
+article.prose th{background:var(--card);}
+.post-meta{color:var(--muted);font-size:13.5px;margin-top:10px;}
+.post-cta{background:var(--pink-tint);border:1px solid var(--pink-line);border-radius:14px;padding:20px 22px;margin:28px 0;}
+.post-cta p{margin-top:6px;}
 .feat p{font-size:14.5px;margin-top:4px;}
 .cta-band{background:var(--pink);border-radius:18px;padding:36px 24px;text-align:center;}
 .cta-band h2{color:#fff;}

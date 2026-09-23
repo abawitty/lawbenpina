@@ -122,6 +122,23 @@ collections:
           - { label: "Facebook page link", name: "facebook", widget: "string", hint: "The full address, starting with https://" }
           - { label: "Location", name: "location", widget: "string" }
 
+      - file: "content/guides.json"
+        label: "Guides page listing"
+        name: "guides"
+        fields:
+          - { label: "Heading", name: "title", widget: "string" }
+          - { label: "Introduction", name: "intro", widget: "text" }
+          - label: "Guides"
+            name: "guides"
+            widget: "list"
+            summary: "{{fields.title}}"
+            hint: "This only edits the title, blurb and date shown on the Guides list. To add a brand-new guide, or change what's written in one, ask your developer — each guide is its own page."
+            fields:
+              - { label: "Title", name: "title", widget: "string" }
+              - { label: "Web address (slug)", name: "slug", widget: "string", hint: "Must match the guide's actual page filename exactly, e.g. how-to-import-from-alibaba-to-ghana" }
+              - { label: "Short blurb (shown on the list)", name: "excerpt", widget: "text" }
+              - { label: "Date", name: "date", widget: "date" }
+
   - name: "settings"
     label: "Site settings"
     files:

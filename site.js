@@ -36,7 +36,7 @@ function updateCartCount() { document.querySelectorAll('.js-cart-count').forEach
 // ---------- products ----------
 async function loadProducts() {
   try {
-    const r = await fetch('products.json', { cache: 'no-cache' });
+    const r = await fetch('/products.json', { cache: 'no-cache' });
     if (!r.ok) return [];
     const d = await r.json();
     return (d.products || [])
@@ -63,7 +63,7 @@ document.querySelectorAll('.js-year').forEach((el) => (el.textContent = new Date
 updateCartCount();
 
 async function init() {
-  try { const r = await fetch('settings.json', { cache: 'no-cache' }); if (r.ok) Object.assign(cfg, await r.json()); } catch (e) {}
+  try { const r = await fetch('/settings.json', { cache: 'no-cache' }); if (r.ok) Object.assign(cfg, await r.json()); } catch (e) {}
   document.querySelectorAll('[data-wa]').forEach((a) => (a.href = waHref(a.dataset.wa)));
   document.querySelectorAll('.js-days').forEach((el) => (el.textContent = cfg.arrivalDays));
   document.querySelectorAll('.js-phone').forEach((a) => { a.href = 'tel:+' + cfg.whatsapp; });
@@ -89,7 +89,12 @@ const TPL = {
   step: (i) => `<li><h3>${fmt(i.title)}</h3><p>${fmt(i.text)}</p></li>`,
   faq: (i) => `<details><summary>${fmt(i.q)}</summary><p>${fmt(i.a)}</p></details>`,
   para: (i) => `<p>${fmt(typeof i === 'string' ? i : i && i.text)}</p>`,
+  guidecard: (i) => `<a class="feat guide-card" href="guides/${esc(i.slug)}.html"><span class="eyebrow">${esc(dateLabel(i.date))}</span><h3>${fmt(i.title)}</h3><p>${fmt(i.excerpt)}</p></a>`,
 };
+function dateLabel(iso) {
+  const d = new Date(iso);
+  return isNaN(d) ? '' : d.toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' });
+}
 function applyCms(d) {
   document.querySelectorAll('[data-cms]').forEach((el) => { const v = d[el.dataset.cms]; if (typeof v === 'string' && v.trim()) el.innerHTML = fmt(v); });
   document.querySelectorAll('[data-cms-href]').forEach((el) => { const v = d[el.dataset.cmsHref]; if (typeof v === 'string' && /^https?:\/\//.test(v.trim())) el.href = v.trim(); });
@@ -101,7 +106,7 @@ function applyCms(d) {
 const pageName = document.body.dataset.page;
 if (pageName) {
   ready.then(async () => {
-    try { const r = await fetch(`content/${pageName}.json`, { cache: 'no-cache' }); if (r.ok) applyCms(await r.json()); } catch (e) {}
+    try { const r = await fetch(`/content/${pageName}.json`, { cache: 'no-cache' }); if (r.ok) applyCms(await r.json()); } catch (e) {}
   });
 }
 

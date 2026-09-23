@@ -336,7 +336,7 @@ $('printBtn').addEventListener('click', () => window.print());
 
 // ---------- startup ----------
 async function init() {
-  try { const r = await fetch('settings.json', { cache: 'no-cache' }); if (r.ok) S.cfg = { ...DEFAULTS, ...(await r.json()) }; } catch (e) {}
+  try { const r = await fetch('/settings.json', { cache: 'no-cache' }); if (r.ok) S.cfg = { ...DEFAULTS, ...(await r.json()) }; } catch (e) {}
   loadDraft();
   renderItems();
 }
