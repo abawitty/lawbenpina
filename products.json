@@ -33,7 +33,7 @@
     },
     {
       "name": "SuoAi 15KG Fully Automatic Washing Machine",
-      "price": 4200,
+      "price": 4999,
       "category": "Home Appliances",
       "image": "/images/products/suoai-15kg-fully-automatic-washing-machine.jpg",
       "description": "SuoAi 15KG fully automatic washing machine.",
@@ -49,7 +49,7 @@
     },
     {
       "name": "Smart Bedside Cabinet with Wireless Charging",
-      "price": 1700,
+      "price": 2950,
       "category": "Furniture",
       "image": "/images/products/smart-bedside-cabinet-with-wireless-charging.jpg",
       "description": "Italian-style smart bedside cabinet with wireless charging.",
@@ -73,7 +73,7 @@
     },
     {
       "name": "PD20W Fast Wall Charger",
-      "price": 25,
+      "price": 55,
       "category": "Phone Accessories",
       "image": "/images/products/pd20w-fast-wall-charger.jpg",
       "description": "PD 20W fast wall charger.",
@@ -86,7 +86,7 @@
     },
     {
       "name": "Smart Password-Lock Bedside Cabinet",
-      "price": 1800,
+      "price": 3350,
       "category": "Furniture",
       "image": "/images/products/smart-password-lock-bedside-cabinet.jpg",
       "description": "Bedside cabinet with a smart password lock.",
@@ -133,7 +133,7 @@
     },
     {
       "name": "Braided iPhone Data Cable",
-      "price": 20,
+      "price": 55,
       "category": "Phone Accessories",
       "image": "/images/products/braided-iphone-data-cable.jpg",
       "description": "Braided data cable for iPhone.",
@@ -148,7 +148,7 @@
     },
     {
       "name": "Power Bank (2,400mAh)",
-      "price": 80,
+      "price": 220,
       "category": "Phone Accessories",
       "image": "/images/products/power-bank-2-400mah.jpg",
       "description": "Portable power bank with a 2,400mAh cell.",
@@ -156,7 +156,7 @@
     },
     {
       "name": "Multi-Tier Kitchen Pot Rack",
-      "price": 150,
+      "price": 180,
       "category": "Kitchen & Home",
       "image": "/images/products/multi-tier-kitchen-pot-rack.jpg",
       "description": "Multi-tier pot rack for the kitchen.",
@@ -218,7 +218,7 @@
     },
     {
       "name": "WeiPinLu Electric Water Flosser",
-      "price": 200,
+      "price": 160,
       "category": "Health & Personal Care",
       "image": "/images/products/weipinlu-electric-water-flosser.jpg",
       "description": "WeiPinLu electric water flosser (oral irrigator).",
